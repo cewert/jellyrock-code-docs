@@ -1,12 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":disableDependencyDashboard",
+    ":rebaseStalePrs"
   ],
   "addLabels": [
     "dependencies"
   ],
-  "rebaseWhen": "conflicted",
+  "rollbackPrs": true,
   "ignorePaths": [
     "**/node_modules/**"
   ],

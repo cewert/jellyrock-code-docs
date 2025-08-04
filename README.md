@@ -7,11 +7,10 @@ Automatically generated code documentation for the [JellyRock](https://github.co
 ## Build
 
 ``` bash
-git clone https://github.com/cewert/jellyrock.git
-cd jellyrock
-npm ci
-npm run build-code-docs
-cd code-docs/gh-pages
+git clone https://github.com/cewert/jellyrock-code-docs.git
+cd jellyrock-code-docs
+npm install
+npm run build
 ```
 
 ## Credits

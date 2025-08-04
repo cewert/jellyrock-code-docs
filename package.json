@@ -1,0 +1,30 @@
+{
+  "name": "jellyrock-code-docs",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "JellyRock code documentation using JSDoc.",
+  "dependencies": {
+    "brighterscript": "0.69.12",
+    "brighterscript-jsdocs-plugin": "0.7.3",
+    "clean-jsdoc-theme": "4.3.0",
+    "jsdoc": "4.0.4",
+    "rimraf": "6.0.1"
+  },
+  "scripts": {
+    "build": "rimraf build/docs && rimraf jellyrock && git clone https://github.com/cewert/jellyrock.git && jsdoc -c jsdoc.json -d docs --readme homepage.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cewert/jellyrock-code-docs.git"
+  },
+  "keywords": [
+    "jellyrock",
+    "code-docs"
+  ],
+  "author": "Charles Ewert",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/cewert/jellyrock-code-docs/issues"
+  },
+  "homepage": "https://github.com/cewert/jellyrock-code-docs#readme"
+}

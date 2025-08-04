@@ -11,7 +11,8 @@
     "rimraf": "6.0.1"
   },
   "scripts": {
-    "build": "rimraf build/docs && rimraf jellyrock && git clone https://github.com/cewert/jellyrock.git && jsdoc -c jsdoc.json -d docs --readme homepage.md"
+    "build": "rimraf jellyrock && git clone https://github.com/cewert/jellyrock.git && jsdoc -c jsdoc.json -d docs --readme homepage.md",
+    "cleanup": "rimraf jellyrock"
   },
   "repository": {
     "type": "git",

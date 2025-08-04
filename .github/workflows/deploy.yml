@@ -3,9 +3,16 @@ name: gh-pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
     paths-ignore:
+      - '.github/workflows/build.yml'
+      - '.github/workflows/update.yml'
+      - '.gitignore'
+      - 'jsdoc.json'
+      - 'LICENSE'
       - 'README.md'
+      - 'renovate.json'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,7 +30,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  run:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -36,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
-          # Only upload the api docs folder
+          # Only upload the code docs folder
           path: "docs"
       - name: Deploy to GitHub Pages
         id: deployment

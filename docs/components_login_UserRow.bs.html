@@ -4,7 +4,7 @@
 sub init()
   m.top.itemComponentName = "UserItem"
   m.top.content = SetData()
-  m.top.observeField("itemSelected", "SetUser")
+  m.top.observeField("itemSelected", "setUser")
   m.top.showRowLabel = [false]
   updateSize()
   m.top.setFocus(true)
@@ -27,7 +27,6 @@ sub updateSize()
   m.top.rowItemSpacing = [40, 0]
   m.top.focusXOffset = [0]
 end sub
-
 
 function setData()
   if not isValid(m.top.itemContent)

@@ -15,6 +15,7 @@ sub init()
   m.hideClock = false
   m.hours = m.top.findNode("hours")
   m.minutes = m.top.findNode("minutes")
+  m.timeSeperator = m.top.findNode("timeSeperator")
 
   m.dateTimeObject = CreateObject("roDateTime")
   m.dateTimeObject.ToLocalTime()
@@ -54,6 +55,7 @@ sub updateTime()
   end if
 
   m.hours.text = displayedHour
+  m.timeSeperator.visible = true
   m.minutes.text = displayedMinute
   m.top.hours = currentHours
   m.top.minutes = currentMinutes

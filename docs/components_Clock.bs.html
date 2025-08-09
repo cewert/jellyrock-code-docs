@@ -39,7 +39,7 @@ sub updateTime()
   displayedMinute = StrI(currentMinutes).trim()
 
   if m.global.device.clockFormat = "24h"
-    if m.currentHours &lt; 10
+    if currentHours &lt; 10
       displayedHour = "0" + displayedHour
     end if
   else

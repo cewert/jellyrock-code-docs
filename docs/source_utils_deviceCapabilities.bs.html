@@ -362,8 +362,11 @@ function getTranscodingProfiles() as object
   }
 
   ' apply max res to transcoding profile
-  tsArray.Conditions = [getMaxHeightArray()]
-  mp4Array.Conditions = [getMaxHeightArray()]
+  maxHeightArray = getMaxHeightArray(true)
+  if maxHeightArray.count() > 0
+    tsArray.Conditions = [maxHeightArray]
+    mp4Array.Conditions = [maxHeightArray]
+  end if
 
   ' add user-selected preferred codec to the front of the list
   if globalUserSettings["playback.preferredAudioCodec"] &lt;> "auto"
@@ -397,7 +400,6 @@ function getCodecProfiles() as object
     "mpeg2": {},
     "av1": {}
   }
-  maxResSetting = globalUserSettings["playback.resolution.max"]
   di = CreateObject("roDeviceInfo")
   maxHeightArray = getMaxHeightArray()
 
@@ -622,7 +624,7 @@ function getCodecProfiles() as object
   end if
 
   ' set max resolution
-  if globalUserSettings["playback.resolution.mode"] = "everything" and maxResSetting &lt;> "off"
+  if maxHeightArray.count() > 0
     h264ProfileArray.Conditions.push(maxHeightArray)
   end if
 
@@ -658,7 +660,7 @@ function getCodecProfiles() as object
     }
 
     ' set max resolution
-    if globalUserSettings["playback.resolution.mode"] = "everything" and maxResSetting &lt;> "off"
+    if maxHeightArray.count() > 0
       mpeg2ProfileArray.Conditions.push(maxHeightArray)
     end if
 
@@ -710,7 +712,7 @@ function getCodecProfiles() as object
     }
 
     ' set max resolution
-    if globalUserSettings["playback.resolution.mode"] = "everything" and maxResSetting &lt;> "off"
+    if maxHeightArray.count() > 0
       av1ProfileArray.Conditions.push(maxHeightArray)
     end if
 
@@ -778,7 +780,7 @@ function getCodecProfiles() as object
     end if
 
     ' set max resolution
-    if globalUserSettings["playback.resolution.mode"] = "everything" and maxResSetting &lt;> "off"
+    if maxHeightArray.count() > 0
       hevcProfileArray.Conditions.push(maxHeightArray)
     end if
 
@@ -836,7 +838,7 @@ function getCodecProfiles() as object
     }
 
     ' set max resolution
-    if globalUserSettings["playback.resolution.mode"] = "everything" and maxResSetting &lt;> "off"
+    if maxHeightArray.count() > 0
       vp9ProfileArray.Conditions.push(maxHeightArray)
     end if
 
@@ -929,21 +931,31 @@ function GetBitRateLimit(codec as string) as object
   return {}
 end function
 
-function getMaxHeightArray() as object
-  maxResSetting = m.global.session.user.settings["playback.resolution.max"]
+function getMaxHeightArray(isRequired = false as boolean) as object
+  userMaxHeight = m.global.session.user.settings["playback.resolution.max"]
+  if userMaxHeight = invalid or userMaxHeight = "" then userMaxHeight = "auto"
+  if userMaxHeight = "off" then return {}
 
-  maxVideoHeight = maxResSetting
-  autoVideoHeight = m.global.device.videoHeight
+  deviceMaxHeight = m.global.device.videoHeight.ToInt()
 
-  if maxResSetting = "auto" or maxVideoHeight.ToInt() > autoVideoHeight.ToInt()
-    maxVideoHeight = autoVideoHeight
+  maxVideoHeight = 1080 ' default to 1080p in case all our validation checks fail
+
+  if userMaxHeight = "auto"
+    if isValid(deviceMaxHeight) and deviceMaxHeight &lt;> 0 and deviceMaxHeight > maxVideoHeight
+      maxVideoHeight = deviceMaxHeight
+    end if
+  else
+    userMaxHeight = userMaxHeight.ToInt()
+    if isValid(userMaxHeight) and userMaxHeight > 0 and userMaxHeight &lt; maxVideoHeight
+      maxVideoHeight = userMaxHeight
+    end if
   end if
 
   return {
     "Condition": "LessThanEqual",
     "Property": "Height",
-    "Value": maxVideoHeight,
-    "IsRequired": true
+    "Value": maxVideoHeight.toStr(),
+    "IsRequired": isRequired
   }
 end function
 

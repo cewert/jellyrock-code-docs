@@ -34,6 +34,7 @@
   setGlobalNodes()
 
   app_start:
+  m.global.sceneManager.callFunc("clearScenes")
   ' First thing to do is validate the ability to use the API
   if not LoginFlow() then return
 
@@ -54,12 +55,18 @@
   if isValid(configEncoding) and isValid(configEncoding.EnableFallbackFont)
     if configEncoding.EnableFallbackFont
       re = CreateObject("roRegex", "Name.:.(.*?).,.Size", "s")
-      filename = APIRequest("FallbackFont/Fonts").GetToString()
-      if isValid(filename)
-        filename = re.match(filename)
-        if isValid(filename) and filename.count() > 0
-          filename = filename[1]
-          APIRequest("FallbackFont/Fonts/" + filename).gettofile("tmp:/font")
+      fontReq = APIRequest("FallbackFont/Fonts")
+      if isValid(fontReq)
+        filename = fontReq.GetToString()
+        if isValid(filename)
+          filename = re.match(filename)
+          if isValid(filename) and filename.count() > 0
+            filename = filename[1]
+            fontFileReq = APIRequest("FallbackFont/Fonts/" + filename)
+            if isValid(fontFileReq)
+              fontFileReq.gettofile("tmp:/font")
+            end if
+          end if
         end if
       end if
     end if

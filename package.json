@@ -8,7 +8,7 @@
     "brighterscript-jsdocs-plugin": "0.7.3",
     "clean-jsdoc-theme": "4.3.0",
     "jsdoc": "4.0.5",
-    "rimraf": "6.1.0"
+    "rimraf": "6.1.2"
   },
   "scripts": {
     "build": "rimraf jellyrock && git clone https://github.com/cewert/jellyrock.git && jsdoc -c jsdoc.json -d docs --readme homepage.md",

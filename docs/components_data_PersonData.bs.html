@@ -12,7 +12,11 @@ sub setFields()
   if not isValid(json) then return
 
   m.top.id = json.id
-  m.top.favorite = json.UserData.isFavorite
+  if isValid(json.UserData)
+    if isValid(json.UserData.isFavorite)
+      m.top.favorite = json.UserData.isFavorite
+    end if
+  end if
   setPoster()
 end sub
 

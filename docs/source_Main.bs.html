@@ -106,6 +106,7 @@
       group = m.global.sceneManager.callFunc("getActiveScene")
       reportingNode = msg.getRoSGNode()
       itemNode = invalid
+      print "quickplay reportingNode=", reportingNode
       if isValid(reportingNode) and isValid(reportingNode.quickPlayNode)
         itemNode = reportingNode.quickPlayNode
         reportingNodeType = reportingNode.subtype()
@@ -183,6 +184,11 @@
       startLoadingSpinner()
 
       currentScene = m.global.sceneManager.callFunc("getActiveScene")
+
+      ' Clear quickPlayNode before modifying nodes to prevent re-triggering the observer
+      if isValid(currentScene) and isValid(currentScene.quickPlayNode)
+        currentScene.quickPlayNode = invalid
+      end if
 
       if isValid(currentScene) and isValid(currentScene.objects) and isValid(currentScene.seasonData)
         currentEpisode = m.global.queueManager.callFunc("getCurrentItem")

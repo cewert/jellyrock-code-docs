@@ -1,6 +1,6 @@
 # jellyrock-code-docs
 
-[![Code Documentation](https://img.shields.io/badge/Code%20Documentation-purple)](https://cewert.github.io/jellyrock-code-docs/)
+[![Code Documentation](https://img.shields.io/badge/Code%20Documentation-purple)](https://jellyrock.github.io/api-docs/)
 
 Automatically generated code documentation for the [JellyRock](https://github.com/jellyrock/jellyrock) Roku app.
 

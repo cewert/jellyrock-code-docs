@@ -29,7 +29,7 @@
       "menu": [
         {
           "title": "Source",
-          "link": "https://github.com/cewert/jellyrock-code-docs",
+          "link": "https://github.com/jellyrock/api-docs",
           "target": "_blank",
           "class": "external-link",
           "id": "github-link"

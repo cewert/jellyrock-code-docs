@@ -2,12 +2,12 @@
 
 [![Code Documentation](https://img.shields.io/badge/Code%20Documentation-purple)](https://cewert.github.io/jellyrock-code-docs/)
 
-Automatically generated code documentation for the [JellyRock](https://github.com/cewert/jellyrock) Roku app.
+Automatically generated code documentation for the [JellyRock](https://github.com/jellyrock/jellyrock) Roku app.
 
 ## Build
 
 ``` bash
-git clone https://github.com/cewert/jellyrock-code-docs.git
+git clone https://github.com/jellyrock/api-docs.git
 cd jellyrock-code-docs
 npm install
 npm run build

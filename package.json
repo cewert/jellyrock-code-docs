@@ -11,12 +11,12 @@
     "rimraf": "6.1.2"
   },
   "scripts": {
-    "build": "rimraf jellyrock && git clone https://github.com/cewert/jellyrock.git && jsdoc -c jsdoc.json -d docs --readme homepage.md",
+    "build": "rimraf jellyrock && git clone https://github.com/jellyrock/jellyrock.git && jsdoc -c jsdoc.json -d docs --readme homepage.md",
     "cleanup": "rimraf jellyrock"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cewert/jellyrock-code-docs.git"
+    "url": "git+https://github.com/jellyrock/api-docs.git"
   },
   "keywords": [
     "jellyrock",
@@ -25,7 +25,7 @@
   "author": "Charles Ewert",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/cewert/jellyrock-code-docs/issues"
+    "url": "https://github.com/jellyrock/api-docs/issues"
   },
-  "homepage": "https://github.com/cewert/jellyrock-code-docs#readme"
+  "homepage": "https://github.com/jellyrock/api-docs#readme"
 }

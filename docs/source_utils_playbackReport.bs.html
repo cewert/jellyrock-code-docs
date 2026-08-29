@@ -1,0 +1,764 @@
+<!DOCTYPE html><html lang="en" style="font-size:16px"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Source: source/utils/playbackReport.bs</title><!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><script src="scripts/third-party/hljs.js" defer="defer"></script><script src="scripts/third-party/hljs-line-num.js" defer="defer"></script><script src="scripts/third-party/popper.js" defer="defer"></script><script src="scripts/third-party/tippy.js" defer="defer"></script><script src="scripts/third-party/tocbot.min.js"></script><script>var baseURL="/",locationPathname="";baseURL=(baseURL=(baseURL="https://api.jellyrock.app/").replace(/https?:\/\//i,"")).substr(baseURL.indexOf("/"))</script><link rel="stylesheet" href="styles/clean-jsdoc-theme.min.css"><svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none"><defs><symbol id="copy-icon" viewbox="0 0 488.3 488.3"><g><path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/><path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/></g></symbol><symbol id="search-icon" viewBox="0 0 512 512"><g><g><path d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z"/></g></g><g><g><path d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z"/></g></g></symbol><symbol id="font-size-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol><symbol id="add-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/></symbol><symbol id="minus-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z"/></symbol><symbol id="dark-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></symbol><symbol id="light-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></symbol><symbol id="reset-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"/></symbol><symbol id="down-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"></path></symbol><symbol id="codepen-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.5 13.202L13 15.535v3.596L19.197 15 16.5 13.202zM14.697 12L12 10.202 9.303 12 12 13.798 14.697 12zM20 10.869L18.303 12 20 13.131V10.87zM19.197 9L13 4.869v3.596l3.5 2.333L19.197 9zM7.5 10.798L11 8.465V4.869L4.803 9 7.5 10.798zM4.803 15L11 19.131v-3.596l-3.5-2.333L4.803 15zM4 13.131L5.697 12 4 10.869v2.262zM2 9a1 1 0 0 1 .445-.832l9-6a1 1 0 0 1 1.11 0l9 6A1 1 0 0 1 22 9v6a1 1 0 0 1-.445.832l-9 6a1 1 0 0 1-1.11 0l-9-6A1 1 0 0 1 2 15V9z"/></symbol><symbol id="close-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></symbol><symbol id="menu-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/></symbol></defs></svg></head><body data-theme="fallback-dark"><div class="sidebar-container"><div class="sidebar" id="sidebar"><a href="/" class="sidebar-title sidebar-title-anchor">JellyRock Code Documentation</a><div class="sidebar-items-container"><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-modules"><div>Modules</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="module-AlbumTrackList.html">AlbumTrackList</a></div><div class="sidebar-section-children"><a href="module-Alpha.html">Alpha</a></div><div class="sidebar-section-children"><a href="module-AlphaKeyboard.html">AlphaKeyboard</a></div><div class="sidebar-section-children"><a href="module-ApiClient.html">ApiClient</a></div><div class="sidebar-section-children"><a href="module-ApiQueueTask.html">ApiQueueTask</a></div><div class="sidebar-section-children"><a href="module-ApiTask.html">ApiTask</a></div><div class="sidebar-section-children"><a href="module-AudioPlayer.html">AudioPlayer</a></div><div class="sidebar-section-children"><a href="module-AudioPlayerView.html">AudioPlayerView</a></div><div class="sidebar-section-children"><a href="module-AuthManager.html">AuthManager</a></div><div class="sidebar-section-children"><a href="module-BackdropFader.html">BackdropFader</a></div><div class="sidebar-section-children"><a href="module-BaseGridView.html">BaseGridView</a></div><div class="sidebar-section-children"><a href="module-BrowseRowItem.html">BrowseRowItem</a></div><div class="sidebar-section-children"><a href="module-ByteUtil.html">ByteUtil</a></div><div class="sidebar-section-children"><a href="module-Clock.html">Clock</a></div><div class="sidebar-section-children"><a href="module-CommunityRating.html">CommunityRating</a></div><div class="sidebar-section-children"><a href="module-ConfigData.html">ConfigData</a></div><div class="sidebar-section-children"><a href="module-ConfigItem.html">ConfigItem</a></div><div class="sidebar-section-children"><a href="module-ConfigList.html">ConfigList</a></div><div class="sidebar-section-children"><a href="module-CriticRating.html">CriticRating</a></div><div class="sidebar-section-children"><a href="module-ExtrasRowList.html">ExtrasRowList</a></div><div class="sidebar-section-children"><a href="module-ExtrasSlider.html">ExtrasSlider</a></div><div class="sidebar-section-children"><a href="module-FavoritesRows.html">FavoritesRows</a></div><div class="sidebar-section-children"><a href="module-FocusableOverview.html">FocusableOverview</a></div><div class="sidebar-section-children"><a href="module-FontDownloadTask.html">FontDownloadTask</a></div><div class="sidebar-section-children"><a href="module-FontScalingTask.html">FontScalingTask</a></div><div class="sidebar-section-children"><a href="module-GaaProbeTask.html">GaaProbeTask</a></div><div class="sidebar-section-children"><a href="module-GenericPresenter.html">GenericPresenter</a></div><div class="sidebar-section-children"><a href="module-GetPlaybackInfoTask.html">GetPlaybackInfoTask</a></div><div class="sidebar-section-children"><a href="module-GetShuffleItemsTask.html">GetShuffleItemsTask</a></div><div class="sidebar-section-children"><a href="module-Gradient.html">Gradient</a></div><div class="sidebar-section-children"><a href="module-GridItem.html">GridItem</a></div><div class="sidebar-section-children"><a href="module-GridPresenterBase.html">GridPresenterBase</a></div><div class="sidebar-section-children"><a href="module-HexKeyboard.html">HexKeyboard</a></div><div class="sidebar-section-children"><a href="module-Home.html">Home</a></div><div class="sidebar-section-children"><a href="module-HomeAction.html">HomeAction</a></div><div class="sidebar-section-children"><a href="module-HomeRows.html">HomeRows</a></div><div class="sidebar-section-children"><a href="module-IconButton.html">IconButton</a></div><div class="sidebar-section-children"><a href="module-IntegerKeyboard.html">IntegerKeyboard</a></div><div class="sidebar-section-children"><a href="module-ItemDetails.html">ItemDetails</a></div><div class="sidebar-section-children"><a href="module-ItemGridOptions.html">ItemGridOptions</a></div><div class="sidebar-section-children"><a href="module-JRButtonGroup.html">JRButtonGroup</a></div><div class="sidebar-section-children"><a href="module-JRButtons.html">JRButtons</a></div><div class="sidebar-section-children"><a href="module-JRDialog.html">JRDialog</a></div><div class="sidebar-section-children"><a href="module-JRDialogPanel.html">JRDialogPanel</a></div><div class="sidebar-section-children"><a href="module-JRDropdown.html">JRDropdown</a></div><div class="sidebar-section-children"><a href="module-JRDropdownItem.html">JRDropdownItem</a></div><div class="sidebar-section-children"><a href="module-JRGroup.html">JRGroup</a></div><div class="sidebar-section-children"><a href="module-JRKeyboardDialog.html">JRKeyboardDialog</a></div><div class="sidebar-section-children"><a href="module-JRLabel.html">JRLabel</a></div><div class="sidebar-section-children"><a href="module-JRLabelList.html">JRLabelList</a></div><div class="sidebar-section-children"><a href="module-JRListDialog.html">JRListDialog</a></div><div class="sidebar-section-children"><a href="module-JRListDialogRow.html">JRListDialogRow</a></div><div class="sidebar-section-children"><a href="module-JRMarkupGrid.html">JRMarkupGrid</a></div><div class="sidebar-section-children"><a href="module-JROverhang.html">JROverhang</a></div><div class="sidebar-section-children"><a href="module-JROverhangIcon.html">JROverhangIcon</a></div><div class="sidebar-section-children"><a href="module-JRPlaceholder.html">JRPlaceholder</a></div><div class="sidebar-section-children"><a href="module-JRPoster.html">JRPoster</a></div><div class="sidebar-section-children"><a href="module-JRPosterGrid.html">JRPosterGrid</a></div><div class="sidebar-section-children"><a href="module-JRRowItem.html">JRRowItem</a></div><div class="sidebar-section-children"><a href="module-JRRowList.html">JRRowList</a></div><div class="sidebar-section-children"><a href="module-JRScene.html">JRScene</a></div><div class="sidebar-section-children"><a href="module-JRScreen.html">JRScreen</a></div><div class="sidebar-section-children"><a href="module-JRScrollingLabel.html">JRScrollingLabel</a></div><div class="sidebar-section-children"><a href="module-JRServer.html">JRServer</a></div><div class="sidebar-section-children"><a href="module-JRTab.html">JRTab</a></div><div class="sidebar-section-children"><a href="module-JRTabBar.html">JRTabBar</a></div><div class="sidebar-section-children"><a href="module-JRTimeGrid.html">JRTimeGrid</a></div><div class="sidebar-section-children"><a href="module-JellyfinDataTransformer.html">JellyfinDataTransformer</a></div><div class="sidebar-section-children"><a href="module-JellyfinUserSettings.html">JellyfinUserSettings</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledLarge.html">LabelDisabledLarge</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledLarger.html">LabelDisabledLarger</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledLargest.html">LabelDisabledLargest</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledMedium.html">LabelDisabledMedium</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledSmall.html">LabelDisabledSmall</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledSmaller.html">LabelDisabledSmaller</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledSmallest.html">LabelDisabledSmallest</a></div><div class="sidebar-section-children"><a href="module-LabelErrorLarge.html">LabelErrorLarge</a></div><div class="sidebar-section-children"><a href="module-LabelErrorLarger.html">LabelErrorLarger</a></div><div class="sidebar-section-children"><a href="module-LabelErrorLargest.html">LabelErrorLargest</a></div><div class="sidebar-section-children"><a href="module-LabelErrorMedium.html">LabelErrorMedium</a></div><div class="sidebar-section-children"><a href="module-LabelErrorSmall.html">LabelErrorSmall</a></div><div class="sidebar-section-children"><a href="module-LabelErrorSmaller.html">LabelErrorSmaller</a></div><div class="sidebar-section-children"><a href="module-LabelErrorSmallest.html">LabelErrorSmallest</a></div><div class="sidebar-section-children"><a href="module-LabelLarge.html">LabelLarge</a></div><div class="sidebar-section-children"><a href="module-LabelLarger.html">LabelLarger</a></div><div class="sidebar-section-children"><a href="module-LabelLargest.html">LabelLargest</a></div><div class="sidebar-section-children"><a href="module-LabelMedium.html">LabelMedium</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryLarge.html">LabelPrimaryLarge</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryLarger.html">LabelPrimaryLarger</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryLargest.html">LabelPrimaryLargest</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryMedium.html">LabelPrimaryMedium</a></div><div class="sidebar-section-children"><a href="module-LabelPrimarySmall.html">LabelPrimarySmall</a></div><div class="sidebar-section-children"><a href="module-LabelPrimarySmaller.html">LabelPrimarySmaller</a></div><div class="sidebar-section-children"><a href="module-LabelPrimarySmallest.html">LabelPrimarySmallest</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryLarge.html">LabelSecondaryLarge</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryLarger.html">LabelSecondaryLarger</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryLargest.html">LabelSecondaryLargest</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryMedium.html">LabelSecondaryMedium</a></div><div class="sidebar-section-children"><a href="module-LabelSecondarySmall.html">LabelSecondarySmall</a></div><div class="sidebar-section-children"><a href="module-LabelSecondarySmaller.html">LabelSecondarySmaller</a></div><div class="sidebar-section-children"><a href="module-LabelSecondarySmallest.html">LabelSecondarySmallest</a></div><div class="sidebar-section-children"><a href="module-LabelSmall.html">LabelSmall</a></div><div class="sidebar-section-children"><a href="module-LabelSmaller.html">LabelSmaller</a></div><div class="sidebar-section-children"><a href="module-LabelSmallest.html">LabelSmallest</a></div><div class="sidebar-section-children"><a href="module-LanguagePicker.html">LanguagePicker</a></div><div class="sidebar-section-children"><a href="module-LiveTVPresenter.html">LiveTVPresenter</a></div><div class="sidebar-section-children"><a href="module-LoadChannelsTask.html">LoadChannelsTask</a></div><div class="sidebar-section-children"><a href="module-LoadItemsTask.html">LoadItemsTask</a></div><div class="sidebar-section-children"><a href="module-LoadItemsTask2.html">LoadItemsTask2</a></div><div class="sidebar-section-children"><a href="module-LoadLatestRowsTask.html">LoadLatestRowsTask</a></div><div class="sidebar-section-children"><a href="module-LoadScreenSaverTimeoutTask.html">LoadScreenSaverTimeoutTask</a></div><div class="sidebar-section-children"><a href="module-LoadSheduleTask.html">LoadSheduleTask</a></div><div class="sidebar-section-children"><a href="module-LoadVideoContentTask.html">LoadVideoContentTask</a></div><div class="sidebar-section-children"><a href="module-Logger.html">Logger</a></div><div class="sidebar-section-children"><a href="module-LoginScene.html">LoginScene</a></div><div class="sidebar-section-children"><a href="module-MediaSegmentAction.html">MediaSegmentAction</a></div><div class="sidebar-section-children"><a href="module-MediaSegmentType.html">MediaSegmentType</a></div><div class="sidebar-section-children"><a href="module-MockSceneManager.html">MockSceneManager</a></div><div class="sidebar-section-children"><a href="module-MoviePresenter.html">MoviePresenter</a></div><div class="sidebar-section-children"><a href="module-MusicArtistGridItem.html">MusicArtistGridItem</a></div><div class="sidebar-section-children"><a href="module-MusicPresenter.html">MusicPresenter</a></div><div class="sidebar-section-children"><a href="module-OSD.html">OSD</a></div><div class="sidebar-section-children"><a href="module-OSDButtonGroup.html">OSDButtonGroup</a></div><div class="sidebar-section-children"><a href="module-OptionNode.html">OptionNode</a></div><div class="sidebar-section-children"><a href="module-OptionsButton.html">OptionsButton</a></div><div class="sidebar-section-children"><a href="module-OptionsData.html">OptionsData</a></div><div class="sidebar-section-children"><a href="module-OptionsSlider.html">OptionsSlider</a></div><div class="sidebar-section-children"><a href="module-OverviewDialog.html">OverviewDialog</a></div><div class="sidebar-section-children"><a href="module-PhotoDetails.html">PhotoDetails</a></div><div class="sidebar-section-children"><a href="module-PhotoPresenter.html">PhotoPresenter</a></div><div class="sidebar-section-children"><a href="module-PlayerHostView.html">PlayerHostView</a></div><div class="sidebar-section-children"><a href="module-PresentationBackdrop.html">PresentationBackdrop</a></div><div class="sidebar-section-children"><a href="module-ProgramDetails.html">ProgramDetails</a></div><div class="sidebar-section-children"><a href="module-PublicUserData.html">PublicUserData</a></div><div class="sidebar-section-children"><a href="module-QueueManager.html">QueueManager</a></div><div class="sidebar-section-children"><a href="module-QuickConnectDialog.html">QuickConnectDialog</a></div><div class="sidebar-section-children"><a href="module-QuickPlayTask.html">QuickPlayTask</a></div><div class="sidebar-section-children"><a href="module-RecordProgramTask.html">RecordProgramTask</a></div><div class="sidebar-section-children"><a href="module-RectangleBackgroundPrimary.html">RectangleBackgroundPrimary</a></div><div class="sidebar-section-children"><a href="module-RectangleBackgroundSecondary.html">RectangleBackgroundSecondary</a></div><div class="sidebar-section-children"><a href="module-RectangleSecondary.html">RectangleSecondary</a></div><div class="sidebar-section-children"><a href="module-RefreshLiveTvMetadataTask.html">RefreshLiveTvMetadataTask</a></div><div class="sidebar-section-children"><a href="module-RemoteControlTask.html">RemoteControlTask</a></div><div class="sidebar-section-children"><a href="module-ResumeButton.html">ResumeButton</a></div><div class="sidebar-section-children"><a href="module-SceneManager.html">SceneManager</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledLarge.html">ScrollingLabelDisabledLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledLarger.html">ScrollingLabelDisabledLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledLargest.html">ScrollingLabelDisabledLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledMedium.html">ScrollingLabelDisabledMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledSmall.html">ScrollingLabelDisabledSmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledSmaller.html">ScrollingLabelDisabledSmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledSmallest.html">ScrollingLabelDisabledSmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorLarge.html">ScrollingLabelErrorLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorLarger.html">ScrollingLabelErrorLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorLargest.html">ScrollingLabelErrorLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorMedium.html">ScrollingLabelErrorMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorSmall.html">ScrollingLabelErrorSmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorSmaller.html">ScrollingLabelErrorSmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorSmallest.html">ScrollingLabelErrorSmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelLarge.html">ScrollingLabelLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelLarger.html">ScrollingLabelLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelLargest.html">ScrollingLabelLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelMedium.html">ScrollingLabelMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryLarge.html">ScrollingLabelPrimaryLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryLarger.html">ScrollingLabelPrimaryLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryLargest.html">ScrollingLabelPrimaryLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryMedium.html">ScrollingLabelPrimaryMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimarySmall.html">ScrollingLabelPrimarySmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimarySmaller.html">ScrollingLabelPrimarySmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimarySmallest.html">ScrollingLabelPrimarySmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryLarge.html">ScrollingLabelSecondaryLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryLarger.html">ScrollingLabelSecondaryLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryLargest.html">ScrollingLabelSecondaryLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryMedium.html">ScrollingLabelSecondaryMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondarySmall.html">ScrollingLabelSecondarySmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondarySmaller.html">ScrollingLabelSecondarySmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondarySmallest.html">ScrollingLabelSecondarySmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSmall.html">ScrollingLabelSmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSmaller.html">ScrollingLabelSmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSmallest.html">ScrollingLabelSmallest</a></div><div class="sidebar-section-children"><a href="module-SearchBox.html">SearchBox</a></div><div class="sidebar-section-children"><a href="module-SearchResults.html">SearchResults</a></div><div class="sidebar-section-children"><a href="module-SearchRow.html">SearchRow</a></div><div class="sidebar-section-children"><a href="module-SearchTask.html">SearchTask</a></div><div class="sidebar-section-children"><a href="module-ServerAction.html">ServerAction</a></div><div class="sidebar-section-children"><a href="module-ServerDiscoveryTask.html">ServerDiscoveryTask</a></div><div class="sidebar-section-children"><a href="module-ServerReachableTask.html">ServerReachableTask</a></div><div class="sidebar-section-children"><a href="module-SessionDataTransformer.html">SessionDataTransformer</a></div><div class="sidebar-section-children"><a href="module-SetServerScreen.html">SetServerScreen</a></div><div class="sidebar-section-children"><a href="module-SideEffectTask.html">SideEffectTask</a></div><div class="sidebar-section-children"><a href="module-SongItem.html">SongItem</a></div><div class="sidebar-section-children"><a href="module-Spinner.html">Spinner</a></div><div class="sidebar-section-children"><a href="module-SubtitleSelection.html">SubtitleSelection</a></div><div class="sidebar-section-children"><a href="module-TVShowPresenter.html">TVShowPresenter</a></div><div class="sidebar-section-children"><a href="module-TaskLedgerBench.html">TaskLedgerBench</a></div><div class="sidebar-section-children"><a href="module-TextButton.html">TextButton</a></div><div class="sidebar-section-children"><a href="module-TextSizeTask.html">TextSizeTask</a></div><div class="sidebar-section-children"><a href="module-Toast.html">Toast</a></div><div class="sidebar-section-children"><a href="module-TrackDropdown.html">TrackDropdown</a></div><div class="sidebar-section-children"><a href="module-TrackDropdownRow.html">TrackDropdownRow</a></div><div class="sidebar-section-children"><a href="module-TrickplayCarousel.html">TrickplayCarousel</a></div><div class="sidebar-section-children"><a href="module-TrickplayTileLoader.html">TrickplayTileLoader</a></div><div class="sidebar-section-children"><a href="module-UserData.html">UserData</a></div><div class="sidebar-section-children"><a href="module-UserItem.html">UserItem</a></div><div class="sidebar-section-children"><a href="module-UserRow.html">UserRow</a></div><div class="sidebar-section-children"><a href="module-UserSelect.html">UserSelect</a></div><div class="sidebar-section-children"><a href="module-VertButtonGroup.html">VertButtonGroup</a></div><div class="sidebar-section-children"><a href="module-VideoNotification.html">VideoNotification</a></div><div class="sidebar-section-children"><a href="module-VideoPlayerView.html">VideoPlayerView</a></div><div class="sidebar-section-children"><a href="module-VideoProgressBar.html">VideoProgressBar</a></div><div class="sidebar-section-children"><a href="module-WebSocketClient.html">WebSocketClient</a></div><div class="sidebar-section-children"><a href="module-WebSocketClientTask.html">WebSocketClientTask</a></div><div class="sidebar-section-children"><a href="module-apiPipeline.html">apiPipeline</a></div><div class="sidebar-section-children"><a href="module-apiPool.html">apiPool</a></div><div class="sidebar-section-children"><a href="module-apiPromise.html">apiPromise</a></div><div class="sidebar-section-children"><a href="module-backdrop.html">backdrop</a></div><div class="sidebar-section-children"><a href="module-baseRequest.html">baseRequest</a></div><div class="sidebar-section-children"><a href="module-captionTask.html">captionTask</a></div><div class="sidebar-section-children"><a href="module-cellLoad.html">cellLoad</a></div><div class="sidebar-section-children"><a href="module-chapterItems.html">chapterItems</a></div><div class="sidebar-section-children"><a href="module-conditional.html">conditional</a></div><div class="sidebar-section-children"><a href="module-config.html">config</a></div><div class="sidebar-section-children"><a href="module-deepLink.html">deepLink</a></div><div class="sidebar-section-children"><a href="module-dialogKeys.html">dialogKeys</a></div><div class="sidebar-section-children"><a href="module-dialogNarration.html">dialogNarration</a></div><div class="sidebar-section-children"><a href="module-dialogResult.html">dialogResult</a></div><div class="sidebar-section-children"><a href="module-dialogReveal.html">dialogReveal</a></div><div class="sidebar-section-children"><a href="module-dialogs.html">dialogs</a></div><div class="sidebar-section-children"><a href="module-displaySettings.html">displaySettings</a></div><div class="sidebar-section-children"><a href="module-extrasLayout.html">extrasLayout</a></div><div class="sidebar-section-children"><a href="module-fallbackFont.html">fallbackFont</a></div><div class="sidebar-section-children"><a href="module-image.html">image</a></div><div class="sidebar-section-children"><a href="module-imageHelpers.html">imageHelpers</a></div><div class="sidebar-section-children"><a href="module-itemImageUrl.html">itemImageUrl</a></div><div class="sidebar-section-children"><a href="module-items.html">items</a></div><div class="sidebar-section-children"><a href="module-languages.html">languages</a></div><div class="sidebar-section-children"><a href="module-latestRows.html">latestRows</a></div><div class="sidebar-section-children"><a href="module-libraryViewFactory.html">libraryViewFactory</a></div><div class="sidebar-section-children"><a href="module-listTheme.html">listTheme</a></div><div class="sidebar-section-children"><a href="module-liveTv.html">liveTv</a></div><div class="sidebar-section-children"><a href="module-loginRouter.html">loginRouter</a></div><div class="sidebar-section-children"><a href="module-main.html">main</a></div><div class="sidebar-section-children"><a href="module-mediaDisplayTitle.html">mediaDisplayTitle</a></div><div class="sidebar-section-children"><a href="module-mediaSegments.html">mediaSegments</a></div><div class="sidebar-section-children"><a href="module-migrations.html">migrations</a></div><div class="sidebar-section-children"><a href="module-misc.html">misc</a></div><div class="sidebar-section-children"><a href="module-nodeHelpers.html">nodeHelpers</a></div><div class="sidebar-section-children"><a href="module-nodeUtils.html">nodeUtils</a></div><div class="sidebar-section-children"><a href="module-placeholderImage.html">placeholderImage</a></div><div class="sidebar-section-children"><a href="module-playbackInfo.html">playbackInfo</a></div><div class="sidebar-section-children"><a href="module-playbackReport.html">playbackReport</a></div><div class="sidebar-section-children"><a href="module-queueBackdropHelper.html">queueBackdropHelper</a></div><div class="sidebar-section-children"><a href="module-quickConnect.html">quickConnect</a></div><div class="sidebar-section-children"><a href="module-quickplay.html">quickplay</a></div><div class="sidebar-section-children"><a href="module-remoteDispatch.html">remoteDispatch</a></div><div class="sidebar-section-children"><a href="module-remoteProtocol.html">remoteProtocol</a></div><div class="sidebar-section-children"><a href="module-replayRoute.html">replayRoute</a></div><div class="sidebar-section-children"><a href="module-rowItemImage.html">rowItemImage</a></div><div class="sidebar-section-children"><a href="module-rowItemText.html">rowItemText</a></div><div class="sidebar-section-children"><a href="module-rowListWrap.html">rowListWrap</a></div><div class="sidebar-section-children"><a href="module-schedule.html">schedule</a></div><div class="sidebar-section-children"><a href="module-screenReadiness.html">screenReadiness</a></div><div class="sidebar-section-children"><a href="module-sdkV1.html">sdkV1</a></div><div class="sidebar-section-children"><a href="module-sdkV2.html">sdkV2</a></div><div class="sidebar-section-children"><a href="module-section.html">section</a></div><div class="sidebar-section-children"><a href="module-sectionScroller.html">sectionScroller</a></div><div class="sidebar-section-children"><a href="module-settings.html">settings</a></div><div class="sidebar-section-children"><a href="module-showScenes.html">showScenes</a></div><div class="sidebar-section-children"><a href="module-skeleton.html">skeleton</a></div><div class="sidebar-section-children"><a href="module-streamSelection.html">streamSelection</a></div><div class="sidebar-section-children"><a href="module-subtitles.html">subtitles</a></div><div class="sidebar-section-children"><a href="module-tasks.html">tasks</a></div><div class="sidebar-section-children"><a href="module-textureManager.html">textureManager</a></div><div class="sidebar-section-children"><a href="module-timeouts.html">timeouts</a></div><div class="sidebar-section-children"><a href="module-trackClusterFocus.html">trackClusterFocus</a></div><div class="sidebar-section-children"><a href="module-trackPickerOptions.html">trackPickerOptions</a></div><div class="sidebar-section-children"><a href="module-transcodeCause.html">transcodeCause</a></div><div class="sidebar-section-children"><a href="module-translate.html">translate</a></div><div class="sidebar-section-children"><a href="module-translateLocale.html">translateLocale</a></div><div class="sidebar-section-children"><a href="module-trickplay.html">trickplay</a></div><div class="sidebar-section-children"><a href="module-url.html">url</a></div><div class="sidebar-section-children"><a href="module-userAuth.html">userAuth</a></div><div class="sidebar-section-children"><a href="module-videoNotifications.html">videoNotifications</a></div><div class="sidebar-section-children"><a href="module-voiceTransport.html">voiceTransport</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-classes"><div>Classes</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="module-ApiClient.ApiClient.html">ApiClient</a></div><div class="sidebar-section-children"><a href="module-GenericPresenter.GenericPresenter.html">GenericPresenter</a></div><div class="sidebar-section-children"><a href="module-GridPresenterBase.GridPresenterBase.html">GridPresenterBase</a></div><div class="sidebar-section-children"><a href="module-JellyfinDataTransformer.JellyfinDataTransformer.html">JellyfinDataTransformer</a></div><div class="sidebar-section-children"><a href="module-LiveTVPresenter.LiveTVPresenter.html">LiveTVPresenter</a></div><div class="sidebar-section-children"><a href="module-MoviePresenter.MoviePresenter.html">MoviePresenter</a></div><div class="sidebar-section-children"><a href="module-MusicPresenter.MusicPresenter.html">MusicPresenter</a></div><div class="sidebar-section-children"><a href="module-PhotoPresenter.PhotoPresenter.html">PhotoPresenter</a></div><div class="sidebar-section-children"><a href="module-SessionDataTransformer.SessionDataTransformer.html">SessionDataTransformer</a></div><div class="sidebar-section-children"><a href="module-TVShowPresenter.TVShowPresenter.html">TVShowPresenter</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-namespaces"><div>Namespaces</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="apiPool.html">apiPool</a></div><div class="sidebar-section-children"><a href="cellLoad.html">cellLoad</a></div><div class="sidebar-section-children"><a href="extrasLayout.html">extrasLayout</a></div><div class="sidebar-section-children"><a href="latestRows.html">latestRows</a></div><div class="sidebar-section-children"><a href="nodeHelpers.html">nodeHelpers</a></div><div class="sidebar-section-children"><a href="nodeUtils.html">nodeUtils</a></div><div class="sidebar-section-children"><a href="quickplay.html">quickplay</a></div><div class="sidebar-section-children"><a href="remoteDispatch.html">remoteDispatch</a></div><div class="sidebar-section-children"><a href="remoteProtocol.html">remoteProtocol</a></div><div class="sidebar-section-children"><a href="screenLoad.html">screenLoad</a></div><div class="sidebar-section-children"><a href="sdkV1.html">sdkV1</a></div><div class="sidebar-section-children"><a href="sdkV1_sdkV1.html">sdkV1/sdkV1</a></div><div class="sidebar-section-children"><a href="sdkV1_sdkV1_users.html">sdkV1/sdkV1/users</a></div><div class="sidebar-section-children"><a href="sdkV2.html">sdkV2</a></div><div class="sidebar-section-children"><a href="sdkV2_sdkV2.html">sdkV2/sdkV2</a></div><div class="sidebar-section-children"><a href="sdkV2_sdkV2_users.html">sdkV2/sdkV2/users</a></div><div class="sidebar-section-children"><a href="skeleton.html">skeleton</a></div><div class="sidebar-section-children"><a href="timeouts.html">timeouts</a></div><div class="sidebar-section-children"><a href="trackClusterFocus.html">trackClusterFocus</a></div><div class="sidebar-section-children"><a href="trickplay.html">trickplay</a></div><div class="sidebar-section-children"><a href="voiceTransport.html">voiceTransport</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-interfaces"><div>Interfaces</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="nodeHelpers.QueueItem.html">QueueItem</a></div></div></div></div></div><div class="navbar-container" id="VuAckcnZhf"><nav class="navbar"><div class="navbar-left-items"><div class="external-link navbar-item"><a id="github-link" href="https://github.com/jellyrock/api-docs" target="_blank">Source</a></div><div class="external-link navbar-item"><a id="jellyfin-link" href="https://jellyfin.org/docs/" target="_blank">Jellyfin docs</a></div><div class="external-link navbar-item"><a id="jellyfin-link" href="https://api.jellyfin.org/" target="_blank">Jellyfin API docs</a></div></div><div class="navbar-right-items"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#dark-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div><nav></nav></nav></div><div class="toc-container"><div class="toc-content"><span class="bold">On this page</span><div id="eed4d2a0bfd64539bb9df78095dec881"></div></div></div><div class="body-wrapper"><div class="main-content"><div class="main-wrapper"><section id="source-page" class="source-page"><header><h1 id="title" class="has-anchor">source_utils_playbackReport.bs</h1></header><article><pre class="prettyprint source lang-js"><code>' The playback-info report: what this stream IS, and what the server is doing to it.
+'
+' Shape: a status line plus sections of label/value rows.
+'
+'   { status: "Transcoding",
+'     sections: [ { id, heading, wideLabels, rows: [ { id, label, value } ] } ] }
+'
+' Two design rules run through the whole file.
+'
+' EVERY ROW IS SOURCE → TARGET, AND THE ARROW ONLY APPEARS WHEN SOMETHING
+' CHANGED. Jellyfin's own web client prints the source and the target as two
+' separate lists you diff by eye; pairing them per aspect answers the actual
+' question ("what is being altered?") in one glance, and the ABSENCE of an arrow
+' says "untouched" without needing a word for it.
+'
+' A TARGET IS ONLY RENDERED WHERE THE SERVER TOLD US ONE. There are three tiers of
+' evidence and they are not interchangeable:
+'
+'   1. TranscodingInfo, off the live session — the ACTUAL output. Codec, channels,
+'      container, width/height, bitrate. Authoritative; available since 10.7.
+'   2. Exact values declared in the TranscodingUrl — &amp;AudioBitrate, &amp;AudioSampleRate,
+'      &amp;SubtitleMethod. The server states these outright.
+'   3. CONSTRAINTS declared in the TranscodingUrl — `&lt;codec>-rangetype` can be a
+'      comma-joined list of allowed values (or the complement of one), and
+'      `&lt;codec>-videobitdepth` is a ceiling rather than an output. These are read
+'      only where they collapse to a single unambiguous answer.
+'
+' Anything outside those tiers is rendered source-only. Inventing "→ SDR" because
+' a transcode is happening would be the most convincing wrong thing this report
+' could say.
+'
+' Pure by contract — no nodes, no `m`, no globals beyond translations. The caller
+' gathers the inputs, which is what lets the whole model be tested without
+' hardware and, since composition moved off the Task thread, rebuilt on every
+' press cheaply enough to stay honest about a stream that changed underneath it.
+import "pkg:/source/translationKeys.bs"
+import "pkg:/source/utils/mediaDisplayTitle.bs"
+import "pkg:/source/utils/misc.bs"
+import "pkg:/source/utils/playbackInfo.bs"
+import "pkg:/source/utils/transcodeCause.bs"
+import "pkg:/source/utils/translate.bs"
+
+' Above this, a reported frame rate is a container timebase rather than a frame
+' rate. See sourceFramerate.
+const MAX_PLAUSIBLE_FRAMERATE = 1000.0
+
+' Build the report model.
+'
+' @param {object} input - see the field list below; every one is optional and a
+'                         missing one costs its rows, never the report
+' @returns {object} - { status, sections }
+function buildPlaybackReport(input as object) as object
+  report = { status: "", sections: [] }
+  if not isValid(input) then return report
+
+  mediaSource = input.mediaSource
+  if not isValid(mediaSource) then mediaSource = {}
+
+  streams = mediaSource.MediaStreams
+  videoStream = getFirstVideoStream(streams)
+  selectedAudio = findStreamByIndex(streams, input.audioStreamIndex, "audio")
+  subtitleStream = findStreamByIndex(streams, input.subtitleStreamIndex, "subtitle")
+
+  transcoding = invalid
+  if isValid(input.session) then transcoding = input.session.TranscodingInfo
+  ' An empty TranscodingInfo AA is not a transcode. The server sends one only
+  ' while an ffmpeg job exists, but a defensive read of `.Count()` costs nothing
+  ' and a zero-key AA would otherwise render an entire empty Transcode section.
+  if isValid(transcoding) and transcoding.Count() = 0 then transcoding = invalid
+
+  urlParams = parseTranscodeUrlParams(mediaSource.TranscodingUrl)
+
+  videoIsCopy = not isValid(transcoding) or isBooleanTrue(transcoding.IsVideoDirect)
+  audioIsCopy = not isValid(transcoding) or isBooleanTrue(transcoding.IsAudioDirect)
+
+  report.status = playbackStatusLabel(input.session, transcoding, videoIsCopy, audioIsCopy)
+
+  reportAppend(report, reasonsSection(transcoding, videoStream, selectedAudio, mediaSource, input))
+  reportAppend(report, videoSection(videoStream, transcoding, urlParams, videoIsCopy))
+  reportAppend(report, audioSection(selectedAudio, transcoding, urlParams, audioIsCopy))
+  reportAppend(report, subtitleSection(subtitleStream, urlParams))
+  reportAppend(report, transcodeSection(transcoding, videoStream, mediaSource, input))
+  reportAppend(report, fileSection(mediaSource, transcoding, input))
+
+  return report
+end function
+
+' Direct play / direct stream / transcoding — or nothing, when we do not know.
+'
+' A SESSION WE NEVER GOT IS NOT A SESSION THAT SAYS DIRECT PLAY, and conflating
+' the two is the worst thing this report can do. `TranscodingInfo` is absent in
+' both cases: on a genuine direct play, and on a dropped /Sessions request or a
+' server that has not registered playback yet. Reading only `transcoding` made
+' every one of those say "Direct playing" — the report's most consequential claim,
+' asserted from an answer nobody gave. The distinction is the SESSION's presence,
+' so that is what this takes.
+'
+' Empty is deliberately silent rather than a "status unknown" line: the sections
+' below are all source-only in this state (no target evidence exists without a
+' session), so the report already reads as "here is the file, nothing claimed
+' about what the server is doing with it". The caller keeps polling and the line
+' fills itself in.
+'
+' The three-way split is Jellyfin's own — its web client swaps its panel heading
+' between "Transcoding Info", "Remuxing Info" and "Direct Streaming Info" on
+' exactly this test. `IsVideoDirect` and `IsAudioDirect` are literally
+' `IsCopyCodec(outputCodec)` in the server, so both being true means the container
+' was rewrapped and not one frame re-encoded.
+function playbackStatusLabel(session as dynamic, transcoding as dynamic, videoIsCopy as boolean, audioIsCopy as boolean) as string
+  if not isValid(session) then return ""
+  if not isValid(transcoding) then return translate(translationKeys.LabelDirectPlaying)
+  if videoIsCopy and audioIsCopy then return translate(translationKeys.LabelDirectStreaming)
+  return translate(translationKeys.LabelTranscoding)
+end function
+
+' The server's reason codes, verbatim, each with our own explanation beside it —
+' but ONLY where a JellyRock setting provably caused it.
+'
+' The codes are not translated and not re-worded. Jellyfin already maintains that
+' vocabulary and a parallel copy here would drift; more to the point, a code we
+' cannot explain is the server's to explain, and inventing a gloss would add
+' nothing a user could act on. What IS worth saying is the part no server can
+' know: that the constraint came from a switch in OUR settings screen. See
+' transcodeCause.bs for how narrowly that is decided.
+function reasonsSection(transcoding as dynamic, videoStream as dynamic, selectedAudio as dynamic, source as object, input as object) as object
+  if not isValid(transcoding) then return invalid
+
+  reasons = transcoding.TranscodeReasons
+  if not isValidAndNotEmpty(reasons) then return invalid
+
+  causeCtx = {
+    settings: input.settings,
+    videoStream: videoStream,
+    audioStream: selectedAudio,
+    container: source.Container,
+    apiVersion: input.apiVersion,
+    deviceSupportsDovi: input.deviceSupportsDovi,
+    deviceMaxHeight: input.deviceMaxHeight,
+    doviPreservationBypassed: input.doviPreservationBypassed
+  }
+
+  rows = []
+  for each reason in reasons
+    code = textOrEmpty(reason)
+    if code = "" then continue for
+
+    cause = ""
+    settingKey = transcodeCauseSettingKey(code, causeCtx)
+    if settingKey &lt;> ""
+      cause = Substitute(translate(translationKeys.MessageCausedByTheSetting), translate(settingKey))
+    end if
+
+    ' The CODE is the label and our sentence is the value, so the two columns pair
+    ' unambiguously however many reasons there are. Stacking them on alternating
+    ' lines reads fine at one reason and becomes unparseable at three, which is
+    ' the common case (4K DoVi HEVC + TrueHD on a stereo setup returns exactly
+    ' three).
+    rows.push({ id: "reason." + code, label: code, value: cause })
+  end for
+
+  ' wideLabels: these labels are reason codes, several times longer than "Codec".
+  return reportSection("reasons", translate(translationKeys.LabelReasons), rows, true)
+end function
+
+function videoSection(stream as dynamic, transcoding as dynamic, urlParams as object, isCopy as boolean) as object
+  if not isValid(stream) then return invalid
+
+  rows = []
+  targetCodec = ""
+  if isValid(transcoding) and not isCopy then targetCodec = upperOrEmpty(transcoding.VideoCodec)
+  reportRow(rows, "video.codec", translationKeys.LabelCodec, pairedValue(upperOrEmpty(stream.Codec), targetCodec))
+
+  ' The codec TAG, not a second codec. It is what distinguishes hvc1 from hev1 —
+  ' the same HEVC bitstream in two container flavours, one of which a device can
+  ' refuse — and it is the only thing VideoCodecTagNotSupported can point at.
+  ' (This row existed in the pre-rebuild report and was dropped with the markup
+  ' renderer; nothing replaced it.)
+  reportRow(rows, "video.codectag", translationKeys.LabelCodecTag, textOrEmpty(stream.CodecTag))
+
+  ' Width/Height off the SESSION are the real output, not the &amp;MaxWidth/&amp;MaxHeight
+  ' caps in the URL — a cap tells you what was allowed, not what came out.
+  targetResolution = ""
+  if isValid(transcoding) and not isCopy then targetResolution = dimensionsLabel(transcoding.Width, transcoding.Height)
+  reportRow(rows, "video.resolution", translationKeys.LabelResolution, pairedValue(dimensionsLabel(stream.Width, stream.Height), targetResolution))
+
+  reportRow(rows, "video.range", translationKeys.LabelRange, pairedValue(formatVideoRangeLabel(stream), targetVideoRange(urlParams, transcoding, isCopy)))
+  reportRow(rows, "video.bitdepth", translationKeys.LabelBitDepth, pairedValue(bitDepthLabel(stream.BitDepth), targetBitDepth(stream, urlParams, transcoding, isCopy)))
+
+  ' SOURCE ONLY — no trustworthy video target exists to pair against.
+  '
+  ' &amp;VideoBitrate reads like the video target and is not one. It is our own
+  ' MaxStreamingBitrate less the audio allowance, and that constant is a "no
+  ' meaningful ceiling" sentinel rather than a real limit, so it is very nearly
+  ' the same figure on every transcode and sits ABOVE the source bitrate on all
+  ' but the largest files. Rendering it as a target claims the encode INFLATES
+  ' the bitrate, which is not a thing that happens. Same rule as resolution
+  ' above: a cap says what was ALLOWED, not what came out, and only the session
+  ' knows the latter.
+  '
+  ' TranscodingInfo.Bitrate cannot stand in for it either — that is the TOTAL
+  ' across streams, so pairing it against a video-only source figure would
+  ' compare two different quantities. It has its own row, labelled as the total,
+  ' in the Transcode section.
+  reportRow(rows, "video.bitrate", translationKeys.LabelBitRate, getDisplayBitrate(stream.BitRate))
+
+  reportRow(rows, "video.framerate", translationKeys.LabelFramerate, framerateLabel(sourceFramerate(stream)))
+  reportRow(rows, "video.profile", translationKeys.LabelProfile, profileAndLevel(stream))
+  ' Reference frames. Niche until it is the whole story: a high count is a
+  ' well-known way to exceed a hardware decoder's budget, and RefFramesNotSupported
+  ' has nothing else in this report to point at.
+  reportRow(rows, "video.refframes", translationKeys.LabelRefFrames, positiveCount(stream.RefFrames))
+
+  reportRow(rows, "video.pixelformat", translationKeys.LabelPixelFormat, textOrEmpty(stream.PixelFormat))
+
+  ' Flags only worth a row when they are true — both are transcode reasons, and
+  ' both are invisible anywhere else in the app.
+  if isBooleanTrue(stream.IsAnamorphic) then reportRow(rows, "video.anamorphic", translationKeys.LabelAnamorphic, translate(translationKeys.LabelYes))
+  if isBooleanTrue(stream.IsInterlaced) then reportRow(rows, "video.interlaced", translationKeys.LabelInterlaced, translate(translationKeys.LabelYes))
+
+  return reportSection("video", translate(translationKeys.LabelVideo), rows, false)
+end function
+
+function audioSection(stream as dynamic, transcoding as dynamic, urlParams as object, isCopy as boolean) as object
+  if not isValid(stream) then return invalid
+
+  rows = []
+  targetCodec = ""
+  targetChannels = ""
+  if isValid(transcoding) and not isCopy
+    targetCodec = upperOrEmpty(transcoding.AudioCodec)
+    targetChannels = formatAudioChannels(mediaNumber(transcoding.AudioChannels))
+  end if
+
+  reportRow(rows, "audio.codec", translationKeys.LabelCodec, pairedValue(upperOrEmpty(stream.Codec), targetCodec))
+  reportRow(rows, "audio.channels", translationKeys.LabelChannels, pairedValue(sourceChannels(stream), targetChannels))
+
+  targetAudioBitrate = ""
+  targetSampleRate = ""
+  if not isCopy
+    targetAudioBitrate = getDisplayBitrate(urlParams["audiobitrate"])
+    targetSampleRate = sampleRateLabel(urlParams["audiosamplerate"])
+  end if
+  reportRow(rows, "audio.bitrate", translationKeys.LabelBitRate, pairedValue(getDisplayBitrate(stream.BitRate), targetAudioBitrate))
+  reportRow(rows, "audio.samplerate", translationKeys.LabelSampleRate, pairedValue(sampleRateLabel(stream.SampleRate), targetSampleRate))
+
+  reportRow(rows, "audio.bitdepth", translationKeys.LabelBitDepth, bitDepthLabel(stream.BitDepth))
+
+  ' The audio profile — "LC", "HE-AAC", "DTS-HD MA". The video side has had a
+  ' profile row since the rebuild and the audio side did not, which left
+  ' AudioProfileNotSupported as the one reason in Jellyfin's vocabulary that named
+  ' a property this report did not show. Plain text rather than profileAndLevel:
+  ' Level is a video concept, and an audio stream that carries one would render a
+  ' meaningless "@ L0.0".
+  reportRow(rows, "audio.profile", translationKeys.LabelProfile, textOrEmpty(stream.Profile))
+  reportRow(rows, "audio.language", translationKeys.LabelLanguage, resolveLanguageName(textOrEmpty(stream.Language)))
+
+  ' AudioSpatialFormat is 10.9+, and reports "None" for most tracks. Presence AND
+  ' meaning are both checked, so it appears only when there is Atmos / DTS:X to
+  ' report — this is exactly why the report gates on data rather than on server
+  ' version: a 10.11 server still sends "None" for an ordinary track.
+  spatial = textOrEmpty(stream.AudioSpatialFormat)
+  if spatial &lt;> "" and LCase(spatial) &lt;> "none"
+    reportRow(rows, "audio.spatial", translationKeys.LabelSpatialAudio, spatial)
+  end if
+
+  return reportSection("audio", translate(translationKeys.LabelAudio), rows, false)
+end function
+
+' What is happening to subtitles, which no other row can explain.
+'
+' &amp;SubtitleMethod is an EXACT declaration, not a constraint — and "Encode" is the
+' one that matters most, because burning subtitles in forces a full video
+' re-encode. Without this row a viewer sees the video being transcoded with no
+' video-shaped reason for it.
+function subtitleSection(stream as dynamic, urlParams as object) as object
+  if not isValid(stream) then return invalid
+
+  rows = []
+  reportRow(rows, "subtitle.track", translationKeys.LabelSubtitles, formatSubtitleDisplayTitle(stream))
+  reportRow(rows, "subtitle.delivery", translationKeys.LabelDelivery, subtitleDelivery(stream, urlParams))
+
+  return reportSection("subtitles", translate(translationKeys.LabelSubtitles), rows, false)
+end function
+
+' The live half of the report — every row here changes while you read it.
+'
+' Speed is the most actionable figure in the whole report and nothing else in the
+' app surfaces it: TranscodingInfo.Framerate is how many frames per second the
+' server is ENCODING (not the output frame rate), so dividing by the source frame
+' rate gives a real-time multiplier. Below 1.0x the server cannot keep up and
+' playback will stall. Jellyfin's web client shows the same ratio.
+function transcodeSection(transcoding as dynamic, videoStream as dynamic, source as object, input as object) as object
+  if not isValid(transcoding) then return invalid
+
+  idle = encoderIsIdle(transcoding, input.previousCompletion)
+
+  rows = []
+  ' When the encoder has parked, Framerate keeps its LAST reported value — the
+  ' server only updates it on an ffmpeg progress report, and a parked ffmpeg sends
+  ' none. Rendering that stale figure is worse than rendering nothing: a frozen
+  ' percentage is a true cumulative number, but "34.0 fps (1.4x)" is a false claim
+  ' about the present tense. So the row says what is actually happening.
+  if idle
+    reportRow(rows, "transcode.speed", translationKeys.LabelSpeed, translate(translationKeys.LabelIdle))
+  else
+    reportRow(rows, "transcode.speed", translationKeys.LabelSpeed, transcodeSpeed(transcoding, videoStream))
+  end if
+
+  ' How far the encoder is ahead of the playhead — the number that EXPLAINS a
+  ' frozen progress figure. A server that has raced ahead and hit its throttle
+  ' stops reporting progress, which reads as broken until you can see it is
+  ' twenty minutes in front of you. Computable from a single poll, unlike idle.
+  reportRow(rows, "transcode.ahead", translationKeys.LabelAhead, transcodeRunway(transcoding, source, input.playheadSeconds))
+
+  reportRow(rows, "transcode.progress", translationKeys.LabelProgress, percentageLabel(transcoding.CompletionPercentage))
+  reportRow(rows, "transcode.bitrate", translationKeys.LabelTotalBitrate, getDisplayBitrate(transcoding.Bitrate))
+
+  ' HardwareAccelerationType arrives from 10.8 onward and is absent on the floor
+  ' server. No version check — an absent field yields an empty value and reportRow
+  ' drops the row, which is the same outcome a version gate would produce with one
+  ' more thing to keep in sync.
+  reportRow(rows, "transcode.acceleration", translationKeys.LabelHardwareAcceleration, textOrEmpty(transcoding.HardwareAccelerationType))
+
+  return reportSection("transcode", translate(translationKeys.LabelTranscode), rows, false)
+end function
+
+' The file itself.
+'
+' PATH IS ADMIN-ONLY, and that is a privacy decision rather than a permissions
+' one. A library path is the server's filesystem laid bare — it routinely carries
+' a person's name in a home directory, a mount point that names a NAS, or a
+' folder structure someone did not choose to publish, and the report is the one
+' screen users are asked to photograph when they file a bug. An administrator is
+' already able to see every path in the Jellyfin dashboard, so showing it to them
+' reveals nothing new; showing it to a shared-server guest can.
+'
+' Absent policy reads as NOT an administrator. The field is server-authoritative
+' and only populated from a real session, so the safe default is the one that
+' withholds — a report missing one row is a smaller failure than a report that
+' leaks a path because a session had not loaded yet.
+'
+' It is still the last row of the last section for the admins who do see it: the
+' report scrolls, so a screenshot of the transcode detail at the top cannot
+' include it without deliberately scrolling down first.
+function fileSection(source as object, transcoding as dynamic, input as object) as object
+  rows = []
+
+  targetContainer = ""
+  if isValid(transcoding) then targetContainer = upperOrEmpty(transcoding.Container)
+  reportRow(rows, "file.container", translationKeys.LabelContainer, pairedValue(upperOrEmpty(source.Container), targetContainer))
+
+  ' NO SIZE ON A LIVE STREAM. A channel has no file to have a size, so whatever
+  ' the server puts here is a byte count of something else — on an HLS channel it
+  ' is the playlist, which rendered as "27.5 KiB" next to a film's "24.2 GiB" and
+  ' invited exactly the wrong reading.
+  '
+  ' Gated on the server SAYING SO rather than on inferring it from a missing
+  ' runtime, which is the same rule the target columns follow: IsInfiniteStream is
+  ' MediaSourceInfo's own declaration and has existed since well before the 10.7
+  ' floor. Absent reads as false, so an older or unusual server shows the row
+  ' exactly as it does today.
+  if not isBooleanTrue(source.IsInfiniteStream)
+    reportRow(rows, "file.size", translationKeys.LabelSize, getReadableSize(source.Size))
+  end if
+  reportRow(rows, "file.bitrate", translationKeys.LabelTotalBitrate, getDisplayBitrate(source.Bitrate))
+  if isBooleanTrue(input.isAdministrator)
+    reportRow(rows, "file.path", translationKeys.LabelPath, textOrEmpty(source.Path))
+  end if
+
+  return reportSection("file", translate(translationKeys.LabelFile), rows, false)
+end function
+
+'
+' ── value formatters ───────────────────────────────────────────────────────────
+'
+
+' The target dynamic range, but only when the server named exactly one.
+'
+' `&lt;codec>-rangetype` is a CONSTRAINT: StreamBuilder writes a comma-joined list of
+' permitted values there, and in one branch the complement of a list. A single
+' value is the only case where the constraint and the outcome coincide.
+function targetVideoRange(urlParams as object, transcoding as dynamic, isCopy as boolean) as string
+  if isCopy or not isValid(transcoding) then return ""
+
+  declared = codecOption(urlParams, transcoding.VideoCodec, "rangetype")
+  if declared = "" then return ""
+
+  ' A LIST IS NOT AUTOMATICALLY AMBIGUOUS, which is the correction here. This
+  ' returned "" for anything containing a comma, and the single most common real
+  ' case is a comma list: JellyRock sends `EqualsAny` with "SDR|DOVIWithSDR" for
+  ' h264, and StreamBuilder's EqualsAny branch re-joins the permitted set as
+  ' `h264-rangetype=SDR,DOVIWithSDR` (StreamBuilder.cs, ProfileConditionValue
+  ' .VideoRangeType). So an HDR10 source tone-mapped to h264 — the case a viewer
+  ' is most likely to open this report to understand — rendered "HDR10" with no
+  ' arrow, which by this report's own rule reads as UNTOUCHED. It was being
+  ' changed. That is the report stating the opposite of the truth, not merely
+  ' withholding.
+  '
+  ' DOLBY VISION VARIANTS ARE UNREACHABLE ON A RE-ENCODE, and dropping them is
+  ' what lets the set collapse. Jellyfin's EncodingHelper only ever REMOVES DoVi
+  ' metadata (DynamicHdrMetadataRemovalPlan.RemoveDovi); nothing in it authors
+  ' DoVi, and tone-mapping is by definition an HDR-to-SDR filter. DoVi output
+  ' therefore survives only by COPY — and a copy sets IsVideoDirect, which the
+  ' isCopy guard above already turned into no target at all. So by the time we
+  ' are here, every DoVi member of the set is describing an outcome that cannot
+  ' happen.
+  '
+  ' Still silent whenever what remains is genuinely more than one answer: an hevc
+  ' profile on an HDR10-capable display permits SDR and HDR10 both, and which one
+  ' comes out is the server's business, not something to guess from a set.
+  candidates = []
+  for each value in declared.split(",")
+    candidate = value.trim()
+    if candidate = "" then continue for
+    if inStr(1, LCase(candidate), "dovi") > 0 then continue for
+    if not arrayHasValue(candidates, candidate) then candidates.push(candidate)
+  end for
+
+  if candidates.count() &lt;> 1 then return ""
+
+  return formatVideoRangeLabel({ VideoRangeType: candidates[0], VideoRange: candidates[0] })
+end function
+
+' The target bit depth, but only when the source actually exceeds the ceiling.
+'
+' `&lt;codec>-videobitdepth` is a maximum, not an output. A 10-bit source under an
+' 8-bit ceiling will come out at 8; an 8-bit source under the same ceiling is
+' untouched, and rendering "8-bit → 8-bit" there would imply a conversion that
+' never happened.
+function targetBitDepth(stream as object, urlParams as object, transcoding as dynamic, isCopy as boolean) as string
+  if isCopy or not isValid(transcoding) then return ""
+
+  ceiling = mediaNumber(codecOption(urlParams, transcoding.VideoCodec, "videobitdepth"))
+  if ceiling &lt;= 0 then return ""
+
+  sourceDepth = mediaNumber(stream.BitDepth)
+  if sourceDepth &lt;= 0 or sourceDepth &lt;= ceiling then return ""
+
+  return bitDepthLabel(ceiling)
+end function
+
+function subtitleDelivery(stream as object, urlParams as object) as string
+  ' 1. The transcode URL states the delivery outright. Exact, and the only source
+  '    that can report a burn-in, which is the one that costs a video re-encode.
+  method = LCase(textOrEmpty(urlParams["subtitlemethod"]))
+  if method &lt;> "" then return subtitleDeliveryLabel(method)
+
+  ' 2. The stream's own DeliveryMethod — the server saying how it intends to
+  '    deliver this track. Preferred over IsExternal because it describes the
+  '    DELIVERY rather than the source file.
+  declared = textOrEmpty(stream.DeliveryMethod)
+  if declared &lt;> "" then return subtitleDeliveryLabel(LCase(declared))
+
+  ' 3. IsExternal, and ONLY when the server actually sent it. `false` is a real
+  '    assertion — a subtitle stream that is not external is in the container —
+  '    so Embedded is earned there rather than assumed.
+  if isValid(stream.IsExternal)
+    if isBooleanTrue(stream.IsExternal) then return translate(translationKeys.LabelExternalSubtitle)
+    return translate(translationKeys.LabelEmbedded)
+  end if
+
+  ' 4. Nothing told us anything. This used to return "Embedded" regardless, which
+  '    is the one place in this module where a guess wore the costume of a fact —
+  '    the same shape as the status line claiming "Direct playing" when /Sessions
+  '    had returned nothing. An absent row is the honest answer, and it is the way
+  '    every other unknown in this report is already handled.
+  return ""
+end function
+
+' A delivery method as the user reads it, or the server's own word when it is one
+' we do not have a label for (Hls, Drop). Never invents one.
+function subtitleDeliveryLabel(method as string) as string
+  if method = "encode" then return translate(translationKeys.LabelBurnedIn)
+  if method = "embed" then return translate(translationKeys.LabelEmbedded)
+  if method = "external" then return translate(translationKeys.LabelExternalSubtitle)
+  return method
+end function
+
+function transcodeSpeed(transcoding as object, videoStream as dynamic) as string
+  encodeFps = decimalOrZero(transcoding.Framerate)
+  if encodeFps &lt;= 0 then return ""
+
+  speed = formatOneDecimal(encodeFps) + " fps"
+
+  sourceFps = sourceFramerate(videoStream)
+  if sourceFps > 0
+    speed = speed + " (" + formatMultiplier(encodeFps / sourceFps) + ")"
+  end if
+
+  return speed
+end function
+
+' True when the encoder is not advancing.
+'
+' The test is one comparison of the RAW CompletionPercentage against the previous
+' poll, and it is safe at a 5-second interval because the server moves that value
+' far faster: measured against a live transcode, 26 consecutive samples at ~1.2s
+' spacing were all distinct and monotonically increasing, with no repeat. So an
+' unchanged value across 5s cannot happen while ffmpeg is running.
+'
+' `previousCompletion` invalid means this is the first sample and nothing can be
+' concluded — the answer is "not idle" rather than a guess, so the row shows the
+' last real speed until a comparison exists (about 5s after the dialog opens).
+function encoderIsIdle(transcoding as object, previousCompletion as dynamic) as boolean
+  if not isValid(previousCompletion) then return false
+
+  current = decimalOrZero(transcoding.CompletionPercentage)
+  if current &lt;= 0 then return false
+
+  return current = decimalOrZero(previousCompletion)
+end function
+
+' The encoder's lead over the playhead, as a timestamp in the same format the OSD
+' progress bar uses.
+'
+' RunTimeTicks is deliberately NOT read through mediaNumber: a three-hour runtime
+' is ~1.08e11 ticks, which overflows a 32-bit integer. The arithmetic stays in
+' floating point throughout for the same reason getReadableSize does.
+function transcodeRunway(transcoding as object, source as object, playheadSeconds as dynamic) as string
+  runtimeSeconds = decimalOrZero(source.RunTimeTicks) / 10000000.0
+  if runtimeSeconds &lt;= 0 then return ""
+
+  completion = decimalOrZero(transcoding.CompletionPercentage)
+  if completion &lt;= 0 then return ""
+
+  runway = ((completion / 100.0) * runtimeSeconds) - decimalOrZero(playheadSeconds)
+  ' A seek past the encoder restarts the transcode, so a negative lead is a real
+  ' transient rather than a bug. Zero is the honest reading of it.
+  if runway &lt; 0 then runway = 0
+
+  return secondsToTimestamp(Int(runway), true)
+end function
+
+' AverageFrameRate first, RealFrameRate as the fallback — matching how Jellyfin's
+' own web client resolves it, so the speed multiplier is computed against the same
+' denominator both clients use.
+'
+' BOTH ARE SANITY-CHECKED, because on an HLS live stream the server can report the
+' container's 90 kHz MPEG-TS clock where a frame rate belongs. Seen on device
+' against a Live TV channel: "Frame Rate 90000.0 fps". That figure is not merely
+' ugly — it is also the denominator of the transcode speed multiplier, so it would
+' turn a healthy encoder into a confident "0.0x", which reads as "the server
+' cannot keep up".
+'
+' A value we cannot believe is treated as no answer at all, so the row is omitted
+' rather than wrong — the same rule the rest of this file follows. The ceiling is
+' deliberately far above any real content (high-frame-rate capture tops out in the
+' hundreds) and far below the 90000 it exists to reject, so it cannot start
+' discarding a rate somebody actually shot.
+function sourceFramerate(stream as dynamic) as float
+  if not isValid(stream) then return 0.0
+
+  rate = plausibleFramerate(stream.AverageFrameRate)
+  if rate > 0 then return rate
+  return plausibleFramerate(stream.RealFrameRate)
+end function
+
+' A frame rate, or 0.0 when the value cannot be one.
+function plausibleFramerate(value as dynamic) as float
+  rate = decimalOrZero(value)
+  if rate &lt;= 0 or rate > MAX_PLAUSIBLE_FRAMERATE then return 0.0
+  return rate
+end function
+
+function profileAndLevel(stream as object) as string
+  profile = textOrEmpty(stream.Profile)
+  level = mediaNumber(stream.Level)
+
+  if profile = "" and level &lt;= 0 then return ""
+  if level &lt;= 0 then return profile
+
+  levelLabel = videoLevelLabel(textOrEmpty(stream.Codec), level)
+  if levelLabel = "" then return profile
+  if profile = "" then return levelLabel
+  return profile + " @ " + levelLabel
+end function
+
+' A codec's level as people write it, or "" when we cannot say.
+'
+' THERE IS NO SINGLE SCALE, which is the thing that makes this worth a function.
+' The report shipped dividing everything by ten and rendered an HEVC Main 10
+' stream at level 150 as "L15.0" — a level that does not exist in the spec, whose
+' maximum is 6.2. Read off Jellyfin's own device profile
+' (jellyfin-web src/scripts/browserDeviceProfile.js), the three scales are:
+'
+'   h264   maxH264Level = 42   -> 4.2      level x 10
+'   hevc   maxHevcLevel = 153  -> 5.1      level x 30
+'   av1    maxAv1Level  = 15   -> 5.3      seq_level_idx, neither
+'
+' AV1 is an INDEX, not a multiple: idx = (major - 2) * 4 + minor, which their own
+' `// level 5.3` comment on 15 confirms and their 16/17/18/19 -> 6.0/6.1/6.2/6.3
+' run corroborates. deviceCapabilities.bs encodes all three scales in
+' `jellyfinVideoLevel()` for the device profile — this is the same knowledge read
+' backwards, and the two must not be allowed to disagree. (That function replaced
+' `convertHevcLevelToString` and a decimal-stripping h264 path in #868, which had
+' av1 on neither scale and mpeg2 on none at all.)
+'
+' ANYTHING ELSE RENDERS NO LEVEL AT ALL. vp9 gets no level condition in Jellyfin's
+' own profile and mpeg2's scale is not established here, so there is no number to
+' divide by and a guess would be the "convincing wrong thing" this file's header
+' warns about. The profile still renders; only the level is withheld.
+function videoLevelLabel(codec as string, level as integer) as string
+  name = LCase(codec)
+
+  if name = "h264" or name = "avc" then return "L" + formatOneDecimal(level / 10.0)
+  if name = "hevc" or name = "h265" then return "L" + formatOneDecimal(level / 30.0)
+
+  ' seq_level_idx, so the two halves are extracted rather than divided.
+  if name = "av1"
+    major = 2 + (level \ 4)
+    minor = level mod 4
+    return "L" + major.toStr().trim() + "." + minor.toStr().trim()
+  end if
+
+  return ""
+end function
+
+' Channel count in the SAME vocabulary as the target, which is the whole point.
+'
+' ChannelLayout is the server's own words and reads better on its own ("stereo"),
+' and preferring it here was a real bug: the target side can only come from
+' TranscodingInfo.AudioChannels, which is a number, so an unchanged stereo track
+' rendered "stereo → 2.0" — an arrow claiming a conversion that never happened.
+' Both sides go through formatAudioChannels so the comparison is meaningful, and
+' ChannelLayout is the fallback only when the count itself is missing.
+function sourceChannels(stream as object) as string
+  channels = formatAudioChannels(mediaNumber(stream.Channels))
+  if channels &lt;> "" then return channels
+  return textOrEmpty(stream.ChannelLayout)
+end function
+
+function dimensionsLabel(width as dynamic, height as dynamic) as string
+  w = mediaNumber(width)
+  h = mediaNumber(height)
+  if w &lt;= 0 or h &lt;= 0 then return ""
+  return w.toStr().trim() + "x" + h.toStr().trim()
+end function
+
+' A count worth printing, or "" — zero and absent are the same non-answer.
+function positiveCount(value as dynamic) as string
+  count = mediaNumber(value)
+  if count &lt;= 0 then return ""
+  return count.toStr().trim()
+end function
+
+function bitDepthLabel(depth as dynamic) as string
+  bits = mediaNumber(depth)
+  if bits &lt;= 0 then return ""
+  return bits.toStr().trim() + "-bit"
+end function
+
+function sampleRateLabel(rate as dynamic) as string
+  hz = mediaNumber(rate)
+  if hz &lt;= 0 then return ""
+  if hz &lt; 1000 then return hz.toStr().trim() + " Hz"
+  return formatOneDecimal(hz / 1000.0) + " kHz"
+end function
+
+function framerateLabel(fps as float) as string
+  if fps &lt;= 0 then return ""
+  return formatOneDecimal(fps) + " fps"
+end function
+
+function percentageLabel(value as dynamic) as string
+  pct = decimalOrZero(value)
+  if pct &lt;= 0 then return ""
+  return formatOneDecimal(pct) + "%"
+end function
+
+function formatMultiplier(value as float) as string
+  return formatOneDecimal(value) + "x"
+end function
+
+function upperOrEmpty(value as dynamic) as string
+  text = textOrEmpty(value)
+  if text = "" then return ""
+  return UCase(text)
+end function
+
+'
+' ── plumbing ───────────────────────────────────────────────────────────────────
+'
+
+' Parse the TranscodingUrl's query string into lowercase-keyed values.
+'
+' JellyRock already reads this URL for TranscodeReasons; the rest of it is the
+' server's own declaration of what it was asked to produce, and it is the only
+' target-side evidence available on every supported server version. Keys are
+' lowercased because per-codec options are written as `&lt;codec>-&lt;name>` with the
+' codec's own casing, which differs between the profile and the session.
+function parseTranscodeUrlParams(url as dynamic) as object
+  params = {}
+  if not isValidAndNotEmpty(url) then return params
+
+  queryStart = inStr(1, url, "?")
+  query = url
+  if queryStart > 0 then query = Mid(url, queryStart + 1)
+
+  for each pair in query.split("&amp;")
+    if pair = "" then continue for
+    separator = inStr(1, pair, "=")
+    if separator &lt;= 1 then continue for
+    key = LCase(Left(pair, separator - 1))
+    params[key] = Mid(pair, separator + 1)
+  end for
+
+  return params
+end function
+
+' A per-codec stream option, e.g. `h264-rangetype`. StreamInfo.GetOption falls
+' back to the unqualified name when the qualified one is absent, so this does too.
+function codecOption(urlParams as object, codec as dynamic, name as string) as string
+  codecName = LCase(textOrEmpty(codec))
+  if codecName &lt;> ""
+    qualified = urlParams[codecName + "-" + name]
+    if isValidAndNotEmpty(qualified) then return textOrEmpty(qualified)
+  end if
+
+  bare = urlParams[name]
+  if isValidAndNotEmpty(bare) then return textOrEmpty(bare)
+  return ""
+end function
+
+' The stream Jellyfin is actually using, found by its own index rather than by
+' position. MediaStreams is a mixed list and the selected audio track is very
+' often not the first one — reading streams[0] is how the old report ended up
+' describing a track nobody was listening to.
+function findStreamByIndex(streams as dynamic, index as dynamic, streamType as string) as dynamic
+  if not isValidAndNotEmpty(streams) then return invalid
+
+  wanted = mediaNumber(index)
+  ' -1 is Jellyfin's "no stream selected", which is a real answer for subtitles.
+  if not isValid(index) or wanted &lt; 0 then return invalid
+
+  for each stream in streams
+    if isValid(stream) and isValid(stream.Type) and LCase(stream.Type) = streamType
+      if mediaNumber(stream.Index) = wanted then return stream
+    end if
+  end for
+
+  return invalid
+end function
+
+' Append a row only when it has something to say. Every field the report reads is
+' optional on some server or some file, so "the row is absent" is the normal way
+' this report handles missing data — never a placeholder, and never a heading with
+' nothing beneath it.
+sub reportRow(rows as object, id as string, labelKey as string, value as string)
+  if not isValidAndNotEmpty(value) then return
+  rows.push({ id: id, label: translate(labelKey), value: value })
+end sub
+
+function reportSection(id as string, heading as string, rows as object, wideLabels as boolean) as object
+  if rows.count() = 0 then return invalid
+  return { id: id, heading: heading, wideLabels: wideLabels, rows: rows }
+end function
+
+sub reportAppend(report as object, section as dynamic)
+  if isValid(section) then report.sections.push(section)
+end sub
+
+</code></pre></article></section><footer class="footer" id="PeOAagUepe"><div class="wrapper"><span class="jsdoc-message">Automatically generated using <a href="https://github.com/jsdoc/jsdoc" target="_blank">JSDoc</a> and the <a href="https://github.com/ankitskvmdam/clean-jsdoc-theme" target="_blank">clean-jsdoc-theme</a>.</span><script defer="defer" src="/_a/script.js" data-website-id="07139597-641c-42e6-8f5a-cbb0d9182a20" data-host-url="https://api.jellyrock.app/_a"></script></div></footer></div></div></div><div class="search-container" id="PkfLWpAbet" style="display:none"><div class="wrapper" id="iCxFxjkHbP"><button class="icon-button search-close-button" id="VjLlGakifb" aria-label="close search"><svg><use xlink:href="#close-icon"></use></svg></button><div class="search-box-c"><svg><use xlink:href="#search-icon"></use></svg> <input type="text" id="vpcKVYIppa" class="search-input" placeholder="Search..." autofocus></div><div class="search-result-c" id="fWwVHRuDuN"><span class="search-result-c-text">Type anything to view search result</span></div></div></div><div class="mobile-menu-icon-container"><button class="icon-button" id="mobile-menu" data-isopen="false" aria-label="menu"><svg><use xlink:href="#menu-icon"></use></svg></button></div><div id="mobile-sidebar" class="mobile-sidebar-container"><div class="mobile-sidebar-wrapper"><a href="/" class="sidebar-title sidebar-title-anchor">JellyRock Code Documentation</a><div class="mobile-nav-links"><div class="external-link navbar-item"><a id="github-link-mobile" href="https://github.com/jellyrock/api-docs" target="_blank">Source</a></div><div class="external-link navbar-item"><a id="jellyfin-link-mobile" href="https://jellyfin.org/docs/" target="_blank">Jellyfin docs</a></div><div class="external-link navbar-item"><a id="jellyfin-link-mobile" href="https://api.jellyfin.org/" target="_blank">Jellyfin API docs</a></div></div><div class="mobile-sidebar-items-c"><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-modules"><div>Modules</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="module-AlbumTrackList.html">AlbumTrackList</a></div><div class="sidebar-section-children"><a href="module-Alpha.html">Alpha</a></div><div class="sidebar-section-children"><a href="module-AlphaKeyboard.html">AlphaKeyboard</a></div><div class="sidebar-section-children"><a href="module-ApiClient.html">ApiClient</a></div><div class="sidebar-section-children"><a href="module-ApiQueueTask.html">ApiQueueTask</a></div><div class="sidebar-section-children"><a href="module-ApiTask.html">ApiTask</a></div><div class="sidebar-section-children"><a href="module-AudioPlayer.html">AudioPlayer</a></div><div class="sidebar-section-children"><a href="module-AudioPlayerView.html">AudioPlayerView</a></div><div class="sidebar-section-children"><a href="module-AuthManager.html">AuthManager</a></div><div class="sidebar-section-children"><a href="module-BackdropFader.html">BackdropFader</a></div><div class="sidebar-section-children"><a href="module-BaseGridView.html">BaseGridView</a></div><div class="sidebar-section-children"><a href="module-BrowseRowItem.html">BrowseRowItem</a></div><div class="sidebar-section-children"><a href="module-ByteUtil.html">ByteUtil</a></div><div class="sidebar-section-children"><a href="module-Clock.html">Clock</a></div><div class="sidebar-section-children"><a href="module-CommunityRating.html">CommunityRating</a></div><div class="sidebar-section-children"><a href="module-ConfigData.html">ConfigData</a></div><div class="sidebar-section-children"><a href="module-ConfigItem.html">ConfigItem</a></div><div class="sidebar-section-children"><a href="module-ConfigList.html">ConfigList</a></div><div class="sidebar-section-children"><a href="module-CriticRating.html">CriticRating</a></div><div class="sidebar-section-children"><a href="module-ExtrasRowList.html">ExtrasRowList</a></div><div class="sidebar-section-children"><a href="module-ExtrasSlider.html">ExtrasSlider</a></div><div class="sidebar-section-children"><a href="module-FavoritesRows.html">FavoritesRows</a></div><div class="sidebar-section-children"><a href="module-FocusableOverview.html">FocusableOverview</a></div><div class="sidebar-section-children"><a href="module-FontDownloadTask.html">FontDownloadTask</a></div><div class="sidebar-section-children"><a href="module-FontScalingTask.html">FontScalingTask</a></div><div class="sidebar-section-children"><a href="module-GaaProbeTask.html">GaaProbeTask</a></div><div class="sidebar-section-children"><a href="module-GenericPresenter.html">GenericPresenter</a></div><div class="sidebar-section-children"><a href="module-GetPlaybackInfoTask.html">GetPlaybackInfoTask</a></div><div class="sidebar-section-children"><a href="module-GetShuffleItemsTask.html">GetShuffleItemsTask</a></div><div class="sidebar-section-children"><a href="module-Gradient.html">Gradient</a></div><div class="sidebar-section-children"><a href="module-GridItem.html">GridItem</a></div><div class="sidebar-section-children"><a href="module-GridPresenterBase.html">GridPresenterBase</a></div><div class="sidebar-section-children"><a href="module-HexKeyboard.html">HexKeyboard</a></div><div class="sidebar-section-children"><a href="module-Home.html">Home</a></div><div class="sidebar-section-children"><a href="module-HomeAction.html">HomeAction</a></div><div class="sidebar-section-children"><a href="module-HomeRows.html">HomeRows</a></div><div class="sidebar-section-children"><a href="module-IconButton.html">IconButton</a></div><div class="sidebar-section-children"><a href="module-IntegerKeyboard.html">IntegerKeyboard</a></div><div class="sidebar-section-children"><a href="module-ItemDetails.html">ItemDetails</a></div><div class="sidebar-section-children"><a href="module-ItemGridOptions.html">ItemGridOptions</a></div><div class="sidebar-section-children"><a href="module-JRButtonGroup.html">JRButtonGroup</a></div><div class="sidebar-section-children"><a href="module-JRButtons.html">JRButtons</a></div><div class="sidebar-section-children"><a href="module-JRDialog.html">JRDialog</a></div><div class="sidebar-section-children"><a href="module-JRDialogPanel.html">JRDialogPanel</a></div><div class="sidebar-section-children"><a href="module-JRDropdown.html">JRDropdown</a></div><div class="sidebar-section-children"><a href="module-JRDropdownItem.html">JRDropdownItem</a></div><div class="sidebar-section-children"><a href="module-JRGroup.html">JRGroup</a></div><div class="sidebar-section-children"><a href="module-JRKeyboardDialog.html">JRKeyboardDialog</a></div><div class="sidebar-section-children"><a href="module-JRLabel.html">JRLabel</a></div><div class="sidebar-section-children"><a href="module-JRLabelList.html">JRLabelList</a></div><div class="sidebar-section-children"><a href="module-JRListDialog.html">JRListDialog</a></div><div class="sidebar-section-children"><a href="module-JRListDialogRow.html">JRListDialogRow</a></div><div class="sidebar-section-children"><a href="module-JRMarkupGrid.html">JRMarkupGrid</a></div><div class="sidebar-section-children"><a href="module-JROverhang.html">JROverhang</a></div><div class="sidebar-section-children"><a href="module-JROverhangIcon.html">JROverhangIcon</a></div><div class="sidebar-section-children"><a href="module-JRPlaceholder.html">JRPlaceholder</a></div><div class="sidebar-section-children"><a href="module-JRPoster.html">JRPoster</a></div><div class="sidebar-section-children"><a href="module-JRPosterGrid.html">JRPosterGrid</a></div><div class="sidebar-section-children"><a href="module-JRRowItem.html">JRRowItem</a></div><div class="sidebar-section-children"><a href="module-JRRowList.html">JRRowList</a></div><div class="sidebar-section-children"><a href="module-JRScene.html">JRScene</a></div><div class="sidebar-section-children"><a href="module-JRScreen.html">JRScreen</a></div><div class="sidebar-section-children"><a href="module-JRScrollingLabel.html">JRScrollingLabel</a></div><div class="sidebar-section-children"><a href="module-JRServer.html">JRServer</a></div><div class="sidebar-section-children"><a href="module-JRTab.html">JRTab</a></div><div class="sidebar-section-children"><a href="module-JRTabBar.html">JRTabBar</a></div><div class="sidebar-section-children"><a href="module-JRTimeGrid.html">JRTimeGrid</a></div><div class="sidebar-section-children"><a href="module-JellyfinDataTransformer.html">JellyfinDataTransformer</a></div><div class="sidebar-section-children"><a href="module-JellyfinUserSettings.html">JellyfinUserSettings</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledLarge.html">LabelDisabledLarge</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledLarger.html">LabelDisabledLarger</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledLargest.html">LabelDisabledLargest</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledMedium.html">LabelDisabledMedium</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledSmall.html">LabelDisabledSmall</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledSmaller.html">LabelDisabledSmaller</a></div><div class="sidebar-section-children"><a href="module-LabelDisabledSmallest.html">LabelDisabledSmallest</a></div><div class="sidebar-section-children"><a href="module-LabelErrorLarge.html">LabelErrorLarge</a></div><div class="sidebar-section-children"><a href="module-LabelErrorLarger.html">LabelErrorLarger</a></div><div class="sidebar-section-children"><a href="module-LabelErrorLargest.html">LabelErrorLargest</a></div><div class="sidebar-section-children"><a href="module-LabelErrorMedium.html">LabelErrorMedium</a></div><div class="sidebar-section-children"><a href="module-LabelErrorSmall.html">LabelErrorSmall</a></div><div class="sidebar-section-children"><a href="module-LabelErrorSmaller.html">LabelErrorSmaller</a></div><div class="sidebar-section-children"><a href="module-LabelErrorSmallest.html">LabelErrorSmallest</a></div><div class="sidebar-section-children"><a href="module-LabelLarge.html">LabelLarge</a></div><div class="sidebar-section-children"><a href="module-LabelLarger.html">LabelLarger</a></div><div class="sidebar-section-children"><a href="module-LabelLargest.html">LabelLargest</a></div><div class="sidebar-section-children"><a href="module-LabelMedium.html">LabelMedium</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryLarge.html">LabelPrimaryLarge</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryLarger.html">LabelPrimaryLarger</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryLargest.html">LabelPrimaryLargest</a></div><div class="sidebar-section-children"><a href="module-LabelPrimaryMedium.html">LabelPrimaryMedium</a></div><div class="sidebar-section-children"><a href="module-LabelPrimarySmall.html">LabelPrimarySmall</a></div><div class="sidebar-section-children"><a href="module-LabelPrimarySmaller.html">LabelPrimarySmaller</a></div><div class="sidebar-section-children"><a href="module-LabelPrimarySmallest.html">LabelPrimarySmallest</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryLarge.html">LabelSecondaryLarge</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryLarger.html">LabelSecondaryLarger</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryLargest.html">LabelSecondaryLargest</a></div><div class="sidebar-section-children"><a href="module-LabelSecondaryMedium.html">LabelSecondaryMedium</a></div><div class="sidebar-section-children"><a href="module-LabelSecondarySmall.html">LabelSecondarySmall</a></div><div class="sidebar-section-children"><a href="module-LabelSecondarySmaller.html">LabelSecondarySmaller</a></div><div class="sidebar-section-children"><a href="module-LabelSecondarySmallest.html">LabelSecondarySmallest</a></div><div class="sidebar-section-children"><a href="module-LabelSmall.html">LabelSmall</a></div><div class="sidebar-section-children"><a href="module-LabelSmaller.html">LabelSmaller</a></div><div class="sidebar-section-children"><a href="module-LabelSmallest.html">LabelSmallest</a></div><div class="sidebar-section-children"><a href="module-LanguagePicker.html">LanguagePicker</a></div><div class="sidebar-section-children"><a href="module-LiveTVPresenter.html">LiveTVPresenter</a></div><div class="sidebar-section-children"><a href="module-LoadChannelsTask.html">LoadChannelsTask</a></div><div class="sidebar-section-children"><a href="module-LoadItemsTask.html">LoadItemsTask</a></div><div class="sidebar-section-children"><a href="module-LoadItemsTask2.html">LoadItemsTask2</a></div><div class="sidebar-section-children"><a href="module-LoadLatestRowsTask.html">LoadLatestRowsTask</a></div><div class="sidebar-section-children"><a href="module-LoadScreenSaverTimeoutTask.html">LoadScreenSaverTimeoutTask</a></div><div class="sidebar-section-children"><a href="module-LoadSheduleTask.html">LoadSheduleTask</a></div><div class="sidebar-section-children"><a href="module-LoadVideoContentTask.html">LoadVideoContentTask</a></div><div class="sidebar-section-children"><a href="module-Logger.html">Logger</a></div><div class="sidebar-section-children"><a href="module-LoginScene.html">LoginScene</a></div><div class="sidebar-section-children"><a href="module-MediaSegmentAction.html">MediaSegmentAction</a></div><div class="sidebar-section-children"><a href="module-MediaSegmentType.html">MediaSegmentType</a></div><div class="sidebar-section-children"><a href="module-MockSceneManager.html">MockSceneManager</a></div><div class="sidebar-section-children"><a href="module-MoviePresenter.html">MoviePresenter</a></div><div class="sidebar-section-children"><a href="module-MusicArtistGridItem.html">MusicArtistGridItem</a></div><div class="sidebar-section-children"><a href="module-MusicPresenter.html">MusicPresenter</a></div><div class="sidebar-section-children"><a href="module-OSD.html">OSD</a></div><div class="sidebar-section-children"><a href="module-OSDButtonGroup.html">OSDButtonGroup</a></div><div class="sidebar-section-children"><a href="module-OptionNode.html">OptionNode</a></div><div class="sidebar-section-children"><a href="module-OptionsButton.html">OptionsButton</a></div><div class="sidebar-section-children"><a href="module-OptionsData.html">OptionsData</a></div><div class="sidebar-section-children"><a href="module-OptionsSlider.html">OptionsSlider</a></div><div class="sidebar-section-children"><a href="module-OverviewDialog.html">OverviewDialog</a></div><div class="sidebar-section-children"><a href="module-PhotoDetails.html">PhotoDetails</a></div><div class="sidebar-section-children"><a href="module-PhotoPresenter.html">PhotoPresenter</a></div><div class="sidebar-section-children"><a href="module-PlayerHostView.html">PlayerHostView</a></div><div class="sidebar-section-children"><a href="module-PresentationBackdrop.html">PresentationBackdrop</a></div><div class="sidebar-section-children"><a href="module-ProgramDetails.html">ProgramDetails</a></div><div class="sidebar-section-children"><a href="module-PublicUserData.html">PublicUserData</a></div><div class="sidebar-section-children"><a href="module-QueueManager.html">QueueManager</a></div><div class="sidebar-section-children"><a href="module-QuickConnectDialog.html">QuickConnectDialog</a></div><div class="sidebar-section-children"><a href="module-QuickPlayTask.html">QuickPlayTask</a></div><div class="sidebar-section-children"><a href="module-RecordProgramTask.html">RecordProgramTask</a></div><div class="sidebar-section-children"><a href="module-RectangleBackgroundPrimary.html">RectangleBackgroundPrimary</a></div><div class="sidebar-section-children"><a href="module-RectangleBackgroundSecondary.html">RectangleBackgroundSecondary</a></div><div class="sidebar-section-children"><a href="module-RectangleSecondary.html">RectangleSecondary</a></div><div class="sidebar-section-children"><a href="module-RefreshLiveTvMetadataTask.html">RefreshLiveTvMetadataTask</a></div><div class="sidebar-section-children"><a href="module-RemoteControlTask.html">RemoteControlTask</a></div><div class="sidebar-section-children"><a href="module-ResumeButton.html">ResumeButton</a></div><div class="sidebar-section-children"><a href="module-SceneManager.html">SceneManager</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledLarge.html">ScrollingLabelDisabledLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledLarger.html">ScrollingLabelDisabledLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledLargest.html">ScrollingLabelDisabledLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledMedium.html">ScrollingLabelDisabledMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledSmall.html">ScrollingLabelDisabledSmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledSmaller.html">ScrollingLabelDisabledSmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelDisabledSmallest.html">ScrollingLabelDisabledSmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorLarge.html">ScrollingLabelErrorLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorLarger.html">ScrollingLabelErrorLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorLargest.html">ScrollingLabelErrorLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorMedium.html">ScrollingLabelErrorMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorSmall.html">ScrollingLabelErrorSmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorSmaller.html">ScrollingLabelErrorSmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelErrorSmallest.html">ScrollingLabelErrorSmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelLarge.html">ScrollingLabelLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelLarger.html">ScrollingLabelLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelLargest.html">ScrollingLabelLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelMedium.html">ScrollingLabelMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryLarge.html">ScrollingLabelPrimaryLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryLarger.html">ScrollingLabelPrimaryLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryLargest.html">ScrollingLabelPrimaryLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimaryMedium.html">ScrollingLabelPrimaryMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimarySmall.html">ScrollingLabelPrimarySmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimarySmaller.html">ScrollingLabelPrimarySmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelPrimarySmallest.html">ScrollingLabelPrimarySmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryLarge.html">ScrollingLabelSecondaryLarge</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryLarger.html">ScrollingLabelSecondaryLarger</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryLargest.html">ScrollingLabelSecondaryLargest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondaryMedium.html">ScrollingLabelSecondaryMedium</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondarySmall.html">ScrollingLabelSecondarySmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondarySmaller.html">ScrollingLabelSecondarySmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSecondarySmallest.html">ScrollingLabelSecondarySmallest</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSmall.html">ScrollingLabelSmall</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSmaller.html">ScrollingLabelSmaller</a></div><div class="sidebar-section-children"><a href="module-ScrollingLabelSmallest.html">ScrollingLabelSmallest</a></div><div class="sidebar-section-children"><a href="module-SearchBox.html">SearchBox</a></div><div class="sidebar-section-children"><a href="module-SearchResults.html">SearchResults</a></div><div class="sidebar-section-children"><a href="module-SearchRow.html">SearchRow</a></div><div class="sidebar-section-children"><a href="module-SearchTask.html">SearchTask</a></div><div class="sidebar-section-children"><a href="module-ServerAction.html">ServerAction</a></div><div class="sidebar-section-children"><a href="module-ServerDiscoveryTask.html">ServerDiscoveryTask</a></div><div class="sidebar-section-children"><a href="module-ServerReachableTask.html">ServerReachableTask</a></div><div class="sidebar-section-children"><a href="module-SessionDataTransformer.html">SessionDataTransformer</a></div><div class="sidebar-section-children"><a href="module-SetServerScreen.html">SetServerScreen</a></div><div class="sidebar-section-children"><a href="module-SideEffectTask.html">SideEffectTask</a></div><div class="sidebar-section-children"><a href="module-SongItem.html">SongItem</a></div><div class="sidebar-section-children"><a href="module-Spinner.html">Spinner</a></div><div class="sidebar-section-children"><a href="module-SubtitleSelection.html">SubtitleSelection</a></div><div class="sidebar-section-children"><a href="module-TVShowPresenter.html">TVShowPresenter</a></div><div class="sidebar-section-children"><a href="module-TaskLedgerBench.html">TaskLedgerBench</a></div><div class="sidebar-section-children"><a href="module-TextButton.html">TextButton</a></div><div class="sidebar-section-children"><a href="module-TextSizeTask.html">TextSizeTask</a></div><div class="sidebar-section-children"><a href="module-Toast.html">Toast</a></div><div class="sidebar-section-children"><a href="module-TrackDropdown.html">TrackDropdown</a></div><div class="sidebar-section-children"><a href="module-TrackDropdownRow.html">TrackDropdownRow</a></div><div class="sidebar-section-children"><a href="module-TrickplayCarousel.html">TrickplayCarousel</a></div><div class="sidebar-section-children"><a href="module-TrickplayTileLoader.html">TrickplayTileLoader</a></div><div class="sidebar-section-children"><a href="module-UserData.html">UserData</a></div><div class="sidebar-section-children"><a href="module-UserItem.html">UserItem</a></div><div class="sidebar-section-children"><a href="module-UserRow.html">UserRow</a></div><div class="sidebar-section-children"><a href="module-UserSelect.html">UserSelect</a></div><div class="sidebar-section-children"><a href="module-VertButtonGroup.html">VertButtonGroup</a></div><div class="sidebar-section-children"><a href="module-VideoNotification.html">VideoNotification</a></div><div class="sidebar-section-children"><a href="module-VideoPlayerView.html">VideoPlayerView</a></div><div class="sidebar-section-children"><a href="module-VideoProgressBar.html">VideoProgressBar</a></div><div class="sidebar-section-children"><a href="module-WebSocketClient.html">WebSocketClient</a></div><div class="sidebar-section-children"><a href="module-WebSocketClientTask.html">WebSocketClientTask</a></div><div class="sidebar-section-children"><a href="module-apiPipeline.html">apiPipeline</a></div><div class="sidebar-section-children"><a href="module-apiPool.html">apiPool</a></div><div class="sidebar-section-children"><a href="module-apiPromise.html">apiPromise</a></div><div class="sidebar-section-children"><a href="module-backdrop.html">backdrop</a></div><div class="sidebar-section-children"><a href="module-baseRequest.html">baseRequest</a></div><div class="sidebar-section-children"><a href="module-captionTask.html">captionTask</a></div><div class="sidebar-section-children"><a href="module-cellLoad.html">cellLoad</a></div><div class="sidebar-section-children"><a href="module-chapterItems.html">chapterItems</a></div><div class="sidebar-section-children"><a href="module-conditional.html">conditional</a></div><div class="sidebar-section-children"><a href="module-config.html">config</a></div><div class="sidebar-section-children"><a href="module-deepLink.html">deepLink</a></div><div class="sidebar-section-children"><a href="module-dialogKeys.html">dialogKeys</a></div><div class="sidebar-section-children"><a href="module-dialogNarration.html">dialogNarration</a></div><div class="sidebar-section-children"><a href="module-dialogResult.html">dialogResult</a></div><div class="sidebar-section-children"><a href="module-dialogReveal.html">dialogReveal</a></div><div class="sidebar-section-children"><a href="module-dialogs.html">dialogs</a></div><div class="sidebar-section-children"><a href="module-displaySettings.html">displaySettings</a></div><div class="sidebar-section-children"><a href="module-extrasLayout.html">extrasLayout</a></div><div class="sidebar-section-children"><a href="module-fallbackFont.html">fallbackFont</a></div><div class="sidebar-section-children"><a href="module-image.html">image</a></div><div class="sidebar-section-children"><a href="module-imageHelpers.html">imageHelpers</a></div><div class="sidebar-section-children"><a href="module-itemImageUrl.html">itemImageUrl</a></div><div class="sidebar-section-children"><a href="module-items.html">items</a></div><div class="sidebar-section-children"><a href="module-languages.html">languages</a></div><div class="sidebar-section-children"><a href="module-latestRows.html">latestRows</a></div><div class="sidebar-section-children"><a href="module-libraryViewFactory.html">libraryViewFactory</a></div><div class="sidebar-section-children"><a href="module-listTheme.html">listTheme</a></div><div class="sidebar-section-children"><a href="module-liveTv.html">liveTv</a></div><div class="sidebar-section-children"><a href="module-loginRouter.html">loginRouter</a></div><div class="sidebar-section-children"><a href="module-main.html">main</a></div><div class="sidebar-section-children"><a href="module-mediaDisplayTitle.html">mediaDisplayTitle</a></div><div class="sidebar-section-children"><a href="module-mediaSegments.html">mediaSegments</a></div><div class="sidebar-section-children"><a href="module-migrations.html">migrations</a></div><div class="sidebar-section-children"><a href="module-misc.html">misc</a></div><div class="sidebar-section-children"><a href="module-nodeHelpers.html">nodeHelpers</a></div><div class="sidebar-section-children"><a href="module-nodeUtils.html">nodeUtils</a></div><div class="sidebar-section-children"><a href="module-placeholderImage.html">placeholderImage</a></div><div class="sidebar-section-children"><a href="module-playbackInfo.html">playbackInfo</a></div><div class="sidebar-section-children"><a href="module-playbackReport.html">playbackReport</a></div><div class="sidebar-section-children"><a href="module-queueBackdropHelper.html">queueBackdropHelper</a></div><div class="sidebar-section-children"><a href="module-quickConnect.html">quickConnect</a></div><div class="sidebar-section-children"><a href="module-quickplay.html">quickplay</a></div><div class="sidebar-section-children"><a href="module-remoteDispatch.html">remoteDispatch</a></div><div class="sidebar-section-children"><a href="module-remoteProtocol.html">remoteProtocol</a></div><div class="sidebar-section-children"><a href="module-replayRoute.html">replayRoute</a></div><div class="sidebar-section-children"><a href="module-rowItemImage.html">rowItemImage</a></div><div class="sidebar-section-children"><a href="module-rowItemText.html">rowItemText</a></div><div class="sidebar-section-children"><a href="module-rowListWrap.html">rowListWrap</a></div><div class="sidebar-section-children"><a href="module-schedule.html">schedule</a></div><div class="sidebar-section-children"><a href="module-screenReadiness.html">screenReadiness</a></div><div class="sidebar-section-children"><a href="module-sdkV1.html">sdkV1</a></div><div class="sidebar-section-children"><a href="module-sdkV2.html">sdkV2</a></div><div class="sidebar-section-children"><a href="module-section.html">section</a></div><div class="sidebar-section-children"><a href="module-sectionScroller.html">sectionScroller</a></div><div class="sidebar-section-children"><a href="module-settings.html">settings</a></div><div class="sidebar-section-children"><a href="module-showScenes.html">showScenes</a></div><div class="sidebar-section-children"><a href="module-skeleton.html">skeleton</a></div><div class="sidebar-section-children"><a href="module-streamSelection.html">streamSelection</a></div><div class="sidebar-section-children"><a href="module-subtitles.html">subtitles</a></div><div class="sidebar-section-children"><a href="module-tasks.html">tasks</a></div><div class="sidebar-section-children"><a href="module-textureManager.html">textureManager</a></div><div class="sidebar-section-children"><a href="module-timeouts.html">timeouts</a></div><div class="sidebar-section-children"><a href="module-trackClusterFocus.html">trackClusterFocus</a></div><div class="sidebar-section-children"><a href="module-trackPickerOptions.html">trackPickerOptions</a></div><div class="sidebar-section-children"><a href="module-transcodeCause.html">transcodeCause</a></div><div class="sidebar-section-children"><a href="module-translate.html">translate</a></div><div class="sidebar-section-children"><a href="module-translateLocale.html">translateLocale</a></div><div class="sidebar-section-children"><a href="module-trickplay.html">trickplay</a></div><div class="sidebar-section-children"><a href="module-url.html">url</a></div><div class="sidebar-section-children"><a href="module-userAuth.html">userAuth</a></div><div class="sidebar-section-children"><a href="module-videoNotifications.html">videoNotifications</a></div><div class="sidebar-section-children"><a href="module-voiceTransport.html">voiceTransport</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-classes"><div>Classes</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="module-ApiClient.ApiClient.html">ApiClient</a></div><div class="sidebar-section-children"><a href="module-GenericPresenter.GenericPresenter.html">GenericPresenter</a></div><div class="sidebar-section-children"><a href="module-GridPresenterBase.GridPresenterBase.html">GridPresenterBase</a></div><div class="sidebar-section-children"><a href="module-JellyfinDataTransformer.JellyfinDataTransformer.html">JellyfinDataTransformer</a></div><div class="sidebar-section-children"><a href="module-LiveTVPresenter.LiveTVPresenter.html">LiveTVPresenter</a></div><div class="sidebar-section-children"><a href="module-MoviePresenter.MoviePresenter.html">MoviePresenter</a></div><div class="sidebar-section-children"><a href="module-MusicPresenter.MusicPresenter.html">MusicPresenter</a></div><div class="sidebar-section-children"><a href="module-PhotoPresenter.PhotoPresenter.html">PhotoPresenter</a></div><div class="sidebar-section-children"><a href="module-SessionDataTransformer.SessionDataTransformer.html">SessionDataTransformer</a></div><div class="sidebar-section-children"><a href="module-TVShowPresenter.TVShowPresenter.html">TVShowPresenter</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-namespaces"><div>Namespaces</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="apiPool.html">apiPool</a></div><div class="sidebar-section-children"><a href="cellLoad.html">cellLoad</a></div><div class="sidebar-section-children"><a href="extrasLayout.html">extrasLayout</a></div><div class="sidebar-section-children"><a href="latestRows.html">latestRows</a></div><div class="sidebar-section-children"><a href="nodeHelpers.html">nodeHelpers</a></div><div class="sidebar-section-children"><a href="nodeUtils.html">nodeUtils</a></div><div class="sidebar-section-children"><a href="quickplay.html">quickplay</a></div><div class="sidebar-section-children"><a href="remoteDispatch.html">remoteDispatch</a></div><div class="sidebar-section-children"><a href="remoteProtocol.html">remoteProtocol</a></div><div class="sidebar-section-children"><a href="screenLoad.html">screenLoad</a></div><div class="sidebar-section-children"><a href="sdkV1.html">sdkV1</a></div><div class="sidebar-section-children"><a href="sdkV1_sdkV1.html">sdkV1/sdkV1</a></div><div class="sidebar-section-children"><a href="sdkV1_sdkV1_users.html">sdkV1/sdkV1/users</a></div><div class="sidebar-section-children"><a href="sdkV2.html">sdkV2</a></div><div class="sidebar-section-children"><a href="sdkV2_sdkV2.html">sdkV2/sdkV2</a></div><div class="sidebar-section-children"><a href="sdkV2_sdkV2_users.html">sdkV2/sdkV2/users</a></div><div class="sidebar-section-children"><a href="skeleton.html">skeleton</a></div><div class="sidebar-section-children"><a href="timeouts.html">timeouts</a></div><div class="sidebar-section-children"><a href="trackClusterFocus.html">trackClusterFocus</a></div><div class="sidebar-section-children"><a href="trickplay.html">trickplay</a></div><div class="sidebar-section-children"><a href="voiceTransport.html">voiceTransport</a></div></div><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-interfaces"><div>Interfaces</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="nodeHelpers.QueueItem.html">QueueItem</a></div></div></div><div class="mobile-navbar-actions"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#dark-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div></div></div><script type="text/javascript" src="scripts/core.min.js"></script><script src="scripts/search.min.js" defer="defer"></script><script src="scripts/third-party/fuse.js" defer="defer"></script><script type="text/javascript">var tocbotInstance=tocbot.init({tocSelector:"#eed4d2a0bfd64539bb9df78095dec881",contentSelector:".main-content",headingSelector:"h1, h2, h3",hasInnerContainers:!0,scrollContainer:".main-content",headingsOffset:130,onClick:bringLinkToView})</script></body></html>

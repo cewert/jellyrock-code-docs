@@ -482,6 +482,11 @@ sub onDestroy()
   m.scheduleGrid.unobserveField("programSelected")
   m.scheduleGrid.unobserveField("leftEdgeTargetTime")
 
+  ' Detach the record-operation observer before releasing any task reference:
+  ' onRecordOperationDone reads m.LoadScheduleTask, so leaving it attached while
+  ' that ref is nulled below would let a late completion dot into invalid (&amp;hec).
+  if isValid(m.RecordProgramTask) then m.RecordProgramTask.unobserveField("recordOperationDone")
+
   ' Stop and release always-present task node
   m.LoadChannelsTask.unobserveField("channels")
   m.LoadChannelsTask.control = "STOP"
@@ -498,7 +503,6 @@ sub onDestroy()
   ' abandonApiPromises() here, so a late fetch can't fire into this destroyed component.
 
   if isValid(m.RecordProgramTask)
-    m.RecordProgramTask.unobserveField("recordOperationDone")
     m.RecordProgramTask.control = "STOP"
     m.RecordProgramTask = invalid
   end if
